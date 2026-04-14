@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# 1. 登入與儀表板 (導向到 cms 資料夾)
+RewriteRule ^portal-auth/signin/?$ cms/login.php [L,QSA]
+RewriteRule ^portal-auth/dashboard/?$ cms/first.php [L,QSA]
+RewriteRule ^portal-auth/picture_library/?$ cms/galleryManager_list.php [L,QSA]
+RewriteRule ^portal-auth/trash/?$ cms/trash.php [L,QSA]
+# 2. 列表頁
+RewriteRule ^portal-auth/tpl=([a-zA-Z0-9_-]+)/list/?$ cms/list.php?module=$1 [L,QSA]
+# 3. 詳細頁
+RewriteRule ^portal-auth/tpl=([a-zA-Z0-9_-]+)/detail/?$ cms/detail.php?module=$1&action=edit [L,QSA]
+# 4. 資訊頁
+RewriteRule ^portal-auth/tpl=([a-zA-Z0-9_-]+)/info/?$ cms/info.php?module=$1 [L,QSA]
+
+RewriteCond %{REQUEST_URI} !^/cms
+RewriteCond %{REQUEST_URI} !^/api
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

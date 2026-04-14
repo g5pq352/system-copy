@@ -1,0 +1,498 @@
+/* 動態欄位編輯器樣式 - 整合 CMS Template Style */
+
+.dynamic-fields-wrapper {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+.dynamic-fields-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.dynamic-fields-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.btn-add-group {
+    padding: 8px 20px;
+    background: #0088cc;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.btn-add-group:hover {
+    background: #006fa8;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-add-group i {
+    margin-right: 6px;
+}
+
+.dynamic-fields-footer {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e8e8e8;
+}
+
+.btn-add-group-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    transition: color 0.3s;
+}
+
+.btn-add-group-link:hover {
+    color: #0088cc;
+    text-decoration: none;
+}
+
+.btn-add-group-link img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* 拖曳排序樣式 */
+.drag-handle {
+    cursor: move;
+    color: #ccc;
+    font-size: 18px;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.drag-handle:hover {
+    color: #999;
+}
+
+/* 多圖拖曳手柄 */
+.image-drag-handle {
+    cursor: move;
+    color: #ccc;
+    font-size: 16px;
+    user-select: none;
+}
+
+.image-drag-handle:hover {
+    color: #999;
+}
+
+.sortable-placeholder {
+    background: #f0f0f0;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    visibility: visible !important;
+}
+
+.ui-sortable-helper {
+    opacity: 0.6 !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+    z-index: 1000 !important;
+    /* ⭐ 確保 box-sizing 一致 */
+    box-sizing: border-box !important;
+}
+
+/* ⭐ 確保拖曳時內部元素不會影響定位 */
+.ui-sortable-helper * {
+    box-sizing: border-box;
+}
+
+/* 多圖容器 */
+/* .dynamic-image-container {
+    min-height: 50px;
+} */
+
+/* 多圖項目 */
+.dynamic-image-item {
+    margin-bottom: 15px;
+}
+
+/* ⭐ 防止拖曳時佔位符過大 */
+.dynamic-image-container .sortable-placeholder {
+    height: 120px !important;
+    min-height: 120px !important;
+}
+
+.dynamic-fields-container {
+    min-height: 50px;
+}
+
+.dynamic-fields-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    background: #f9f9f9;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+}
+
+.dynamic-field-group {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s;
+}
+
+.dynamic-field-group.collapsed {
+    padding: 15px 20px;
+}
+
+.dynamic-field-group.collapsed .dynamic-field-group-header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.dynamic-field-group:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dynamic-field-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.header-left {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-toggle-group {
+    padding: 6px 10px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+}
+
+.btn-toggle-group:hover {
+    background: #5a6268;
+}
+
+.btn-toggle-group i {
+    font-size: 12px;
+}
+
+.group-number {
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+    background: #f5f5f5;
+    padding: 5px 12px;
+    border-radius: 3px;
+}
+
+.btn-remove-group {
+    padding: 6px 14px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-remove-group:hover {
+    background: #c82333;
+}
+
+.btn-remove-group i {
+    margin-right: 5px;
+}
+
+.dynamic-field-group-body {
+    display: grid;
+    gap: 18px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.dynamic-field-group-body .form-group {
+    margin-bottom: 0;
+}
+
+.dynamic-field-group-body label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 13px;
+}
+
+.dynamic-field-group-body label.error {
+    font-size: 0.9em;
+    color: #C10000;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.dynamic-field-group-body .required {
+    color: #dc3545;
+    margin-left: 3px;
+}
+
+.dynamic-field-group-body .form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: "Poppins", Arial, sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #fff;
+}
+
+.dynamic-field-group-body .form-control:focus {
+    outline: none;
+    border-color: #0088cc;
+    box-shadow: 0 0 0 3px rgba(0,136,204,0.1);
+}
+
+.dynamic-field-group-body textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.5;
+}
+
+/* 圖片上傳欄位 */
+.image-upload-group {
+    margin-bottom: 0;
+}
+
+.image-upload-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.image-preview {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f9f9f9;
+    flex-shrink: 0;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-remove-image {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: rgba(220, 53, 69, 0.95);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-remove-image:hover {
+    background: rgba(200, 35, 51, 1);
+    transform: scale(1.1);
+}
+
+.btn-select-image {
+    padding: 10px 18px;
+    background: #0088cc;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.btn-select-image:hover {
+    background: #006fa8;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-select-image i {
+    margin-right: 6px;
+}
+
+.dynamic-fields-note {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-left: 4px solid #ffc107;
+    border-radius: 3px;
+    color: #856404;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.dynamic-fields-note::before {
+    content: "\f05a";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 8px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .dynamic-fields-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .btn-add-group {
+        width: 100%;
+    }
+
+    .dynamic-field-group {
+        padding: 15px;
+    }
+
+    .dynamic-field-group-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .header-left {
+        width: 100%;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .btn-remove-group {
+        flex: 1;
+    }
+
+    .image-upload-wrapper {
+        flex-direction: column;
+    }
+
+    .btn-select-image {
+        width: 100%;
+    }
+
+    .image-preview {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* 拖曳排序效果 */
+.dynamic-field-group.sortable-ghost {
+    opacity: 0.4;
+    background: #f0f0f0;
+}
+
+.dynamic-field-group.sortable-drag {
+    opacity: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dynamic-field-group {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* 整合 Bootstrap 樣式 */
+.dynamic-fields-wrapper .btn {
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.dynamic-fields-wrapper .form-control:disabled,
+.dynamic-fields-wrapper .form-control[readonly] {
+    background-color: #f5f5f5;
+    opacity: 1;
+}
+
+/* 修正 select 缺少箭頭的問題 */
+.dynamic-field-group-body select.form-control {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 30px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.dynamic-field-group-body select.form-control:focus {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230088cc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+

@@ -1,0 +1,6 @@
+{
+    "watch": ["template/js/common.js"],
+    "exec": "terser template/js/common.js -o template/js/dist/common.min.js --compress --mangle",
+    "quiet": true,
+    "verbose": false
+}

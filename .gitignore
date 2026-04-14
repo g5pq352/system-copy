@@ -1,0 +1,84 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# Logs and temp files
+Connections/logs/
+error_log/
+*.log
+*.cache
+*.tmp
+*.bak
+
+# Environment or config file
+.env
+#.env_example
+#Connections/db_config.php
+
+# Uploads / generated files
+/public/uploads/
+public/temp/
+
+# Composer (if you use it)
+#vendor/
+composer.lock
+package-lock.json
+
+# Backup files
+*.zip
+*.tar
+*.gz
+
+# User uploads
+/upload_image/
+/upload_file/
+/thumbs/
+/uploads/
+
+# module path
+/views/
+/template/
+/sass/
+/stylesheets/
+/src/
+/dist/
+
+# Node modules
+node_modules/
+npm-debug.log
+
+# Runtime data
+pids
+*.pids*.seed
+*.pid.lock
+
+# Build output
+#dist/
+out/
+
+# Electron packaged apps
+*.asar
+
+# Other files
+# filemanager/
+# filemanager/*
+# cms/ckeditor
+
+# Common
+#dist/
+/build/
+.idea/
+.vscode/
+*.log
+
+# gitlab
+.gitlab-ci.yml
+
+#others
+.claude/
+sync_branches.sh
+app/template_set.php

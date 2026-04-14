@@ -1,0 +1,3579 @@
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 11:57:30
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => root
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 4436f859-661c-4adc-964b-7077feaef322
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => news_single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => ec18ba84-6b2d-4106-aace-2627e611c435
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => product_multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 6dff7cd6-1e2e-4ca1-9a42-de32ad250e98
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 12:05:42
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => admin
+    [d_data3] => 
+    [d_data4] => 531429365858
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 7b3a97ba-fc6a-4a46-9fd6-f51dbb298a59
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => news_single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => e4fc24df-c115-417c-835b-c9b69e05bfbe
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => product_multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 75480bfc-3bb8-441c-8581-ddc0e067a514
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+SQL ERROR: SQLSTATE[42000]: Syntax error or access violation: 1701 Cannot truncate a table referenced in a foreign key constraint (`admin`.`taxonomies`, CONSTRAINT `fk_taxonomies_taxonomy_type`)
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 12:08:57
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => root
+    [d_data4] => 531429365858
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 18b9efcf-3687-4a47-9a74-f2b064eced89
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => news_single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 35124254-777d-45cc-a762-5c710c59da23
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => product_multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => c4db911f-a69b-41fc-8699-d55d766ff9c6
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+SQL ERROR: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 12:21:11
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => root
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 95ae23d9-ad4e-4a6d-9668-f09150b448da
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => news_single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => f8384c1d-e365-4dad-a05e-f5990b56d957
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => product_multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 83757d39-6c04-4553-b478-4a8a59c88b28
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+SQL ERROR: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 12:26:59
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => admin
+    [d_data3] => 
+    [d_data4] => 531429365858
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 3fc9f142-061d-4aed-9172-55f953b812f8
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => news_single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 0d2556b9-2599-4568-a8b7-c740eb7239ce
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => product_multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 63fd008d-46f5-4977-a91a-0cf2f831c835
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 12:30:05
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => root
+    [d_data4] => 531429365858
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 62e9fe60-95b4-40ea-8b36-82d8caa5e21d
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => news_single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => a84ebf36-b997-423c-974c-b3a6173a859e
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => product_multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 374dccd3-2038-46ac-960d-ae0e9e2fdc85
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => 
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 12:51:17
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => admin
+    [d_data3] => 
+    [d_data4] => 531429365858
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => d7273fb2-07c7-469e-abd1-3ef91c12be74
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => news_single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 3a64bd28-99b7-4444-9ada-cef8cf38dec9
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => product_multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 582321af-be59-4b33-8072-0640242a02ac
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+SQL ERROR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 13:01:03
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 3ea12480-a2d5-4ad9-b03b-bc332eb58d12
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => news_single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => f4d18498-a430-44e9-87e3-7456aaca22ec
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => product_multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 83d0c05d-feec-4f87-b7bc-ae3508eb5738
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 13:18:22
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => bc8c6a42-793d-47a0-a0c0-064091c796ab
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => a244c344-241c-4f27-b7ef-156a9a524e1b
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 455d9ac2-0f5e-465d-a24e-64701630a967
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 13:32:41
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 8e1a59bf-d586-456a-b5b9-ad3ce708363c
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 21ca5cdf-80c3-46bb-bd24-edab249aa41d
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => b355dc53-5625-4690-9c71-f0a5cc0ce5a4
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 13:47:23
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 19de9b9a-fb17-4807-b42f-5ccc7dad8159
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 789a0fa2-e0e7-4e99-964a-5ebe4484b51a
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 0cb1d2f7-2cdc-47f1-807b-572695247f6a
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_date] => 2026-04-09 13:56:38
+    [d_active] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 3c6102e5-bbdc-4da5-8d8e-f90b5a7a4238
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 283f9326-16a8-4569-8fa1-2746de09502b
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 7e374ac3-d1fc-4348-9f2c-e3c5376aa5d9
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 770420b5-9ce2-4a79-9114-43442c8ed2ae
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => b5d404c2-2d43-405d-8fc1-dc75a2c98499
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-09 15:46:20
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => fbef4576-d2f1-4351-b422-a362b2e1f66c
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 491d6340-5e76-4be4-9c10-8b721d46275c
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => single
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 11ce3594-f209-45f1-a12d-bb616b043012
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 29961c21-5396-4aca-b0f5-dc483180f832
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 31846def-df33-46a1-8e42-1a0415305e96
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => QQQ
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-09 15:54:45
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 23381fc3-79b3-4260-83c3-ae941b621d62
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 26d54c90-c4fd-4a7d-8fe0-e645ce2048bb
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => a96edda9-ca1e-4555-b5bd-99e9c4c42a49
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 738c0e7b-67b0-425b-a35e-94b0b95952cb
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 730624bb-dca3-473b-80a7-89ae9a4261fb
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => test
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-09 16:00:04
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 8518d8c0-cf49-483e-b56a-8943ebe49d32
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 767c4c06-3f5e-4d6d-92e5-ef3647c10fc8
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 4aff5888-1cfc-4d93-bfe3-cfa1c13fa98e
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 1a6f1185-1a82-4174-91b9-391e2743d6b8
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => f076856e-e34e-4901-9438-8fdc022319ae
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => test
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-09 16:12:11
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => aeda3cd0-e0fb-4748-8004-07ebd3bfcec3
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 4484c0f3-5bc3-4eb9-829f-1a2744a9383d
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_update] => form1
+    [d_id] => 30
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => test
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-09 16:12:11
+    [d_active] => 0
+    [d_data7] => https://test.goods-design.com
+    [d_data8] => https://test.goods-design.com/portal-auth/signin
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => aeda3cd0-e0fb-4748-8004-07ebd3bfcec3
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 4484c0f3-5bc3-4eb9-829f-1a2744a9383d
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-09 17:04:39
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 548a3a04-e1ef-43f8-8220-3ed1389facde
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 893240b2-5317-42c6-8b39-d1ce4b3e8036
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 0c4c089f-49c1-419d-9b5b-e4f19a4877f3
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => e47bfbe8-57d4-4091-914d-6eb03a585f37
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => f22f8eae-1c75-43fa-97ab-fc762d436c48
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-09 17:33:57
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 744cca4f-525b-4b6b-a301-f3db1b128682
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 3fe6b141-3321-46dd-8bf9-2619141ee7e2
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 3de4137c-3368-4d10-ad5b-5debd1dd040b
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => e7d126d9-79c0-457c-9e63-6ffa75b3c864
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => c6539a05-0663-4107-9d33-bcbaf89dd404
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-09 17:36:04
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 9c37376a-dcc0-4417-9a67-c7797dfdf9c5
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 3fe5b892-3d93-48f9-b9f0-fb7df2204bcd
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 38eb4f09-863f-45b5-883f-70ffb03aca09
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => d9ad6620-d410-45b7-b7c4-f063993ec277
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 839c337d-e6ef-48e1-9504-142b48b311fc
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => test
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-09 18:33:00
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 17c4c5c7-2263-4e04-b61f-8d0d5db3aeeb
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 792988ea-2525-4830-a8fa-4567f61a4632
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 3bd73075-a929-42cd-a954-75503fa8843f
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 32332538-fd05-4aed-9f93-90156541585e
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => d4019b2b-c506-48de-b63c-227a7b506664
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-10 09:57:43
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 6d1b611c-77cd-42ee-93c5-0c7148927b20
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 804fa1d7-4bf6-4604-9a4d-c751da623529
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 1f07440c-b6b0-44c5-86e1-3099e8a967ab
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => df271c7d-13b8-460a-bbde-93fcee4ce84b
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => d1bd97ee-9a1d-4de3-8ff1-0a04167894ff
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => 測試網站
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-10 10:35:37
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 8ef031c3-43e3-4ebf-9f3c-6d7b4accf815
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 6fc592a5-0172-4578-b5a7-e781c357baf9
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 65e032a8-6c88-4303-a8ba-50cf83de0d57
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => d404abe6-684a-48e2-a2c6-f483d196e592
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 81b1c827-ab23-4d80-a985-61673c57f83f
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => test
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-10 10:52:32
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => test
+    [d_title_en] => web-test
+    [d_data6] => test
+    [d_date] => 2026-04-10 10:53:01
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 11:08:00
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => product
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 11:15:29
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 2324d506-b2bd-4f43-a0d8-a7b035fd53ed
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 98509579-f123-4caa-9db5-27b98f83c744
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 3e9daa3c-c985-41d5-b9cd-60dee08fe247
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => fabd236e-7b22-412a-bb44-81eeb85e0e06
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => e493f9f6-3340-488e-af9e-490674fff273
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 11:20:50
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 96abb4fd-9ea0-47d1-ad0a-485163e44e91
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 958184ea-6fc5-476e-a97c-77d37b7a5b29
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 2d9f23bf-189d-4cb1-8bfa-ca4d41bc04c0
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 2af78013-b5a9-4e13-8bc9-36e9150fb829
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => d0b49869-7fe3-4164-90c2-a5ebcaf8f9e4
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 11:28:21
+    [d_active] => 
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 8acee1f7-5637-426d-b3e8-d26f87ecfada
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 1652ef03-c802-4d0d-99e9-1cf0be5e9768
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => e2df460a-5b9c-4606-b8a9-6a0c3014e9f1
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 7cef954f-778a-4b17-8773-3edfe3785485
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => fd901f70-fc94-4343-bc95-cfe33e5d5cdd
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => d4c98a89-b129-4497-b027-1de6be9f1298
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_update] => form1
+    [d_id] => 42
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 11:28:21
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 8acee1f7-5637-426d-b3e8-d26f87ecfada
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 1652ef03-c802-4d0d-99e9-1cf0be5e9768
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => e2df460a-5b9c-4606-b8a9-6a0c3014e9f1
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 7cef954f-778a-4b17-8773-3edfe3785485
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => fd901f70-fc94-4343-bc95-cfe33e5d5cdd
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => d4c98a89-b129-4497-b027-1de6be9f1298
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 11:39:18
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => fb5fafce-3ecc-4f46-981d-5d8277a93ab5
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 0b61ea83-baff-452c-a585-7ae8006d8cfe
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => c442dc32-1590-4cc8-a818-688b7d2bcef6
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 6abb4f11-adba-46a0-ab39-523b5fa13f14
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 2a3455c5-2f78-423d-8fec-0874f1ca942a
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 0d2d047a-7f22-46e5-9131-762a6eea59d2
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 11:43:30
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => ea82b0fd-9107-4ef8-a24a-a3e1bed0b018
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => f7ce5362-6e2d-4f15-9b56-a65088709b53
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => f6300839-a3f6-47f4-94f3-91f7bd5f5386
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 8b68e1ce-9ad7-466c-bcfb-e3076d680fb0
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 973c3783-3440-4c49-8f9b-735d177f4ccb
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 37f2c2f6-c94f-4e2b-885d-2bc89222a397
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 13:09:53
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => e357809f-f592-42c5-96e5-4575d8f882fd
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => c53d1b36-6b36-4c6b-a331-a2af66cbc822
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 19662efa-376e-4057-a943-b6a335d5daa9
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 748cd5ed-92a1-442e-b5d0-5502881d3dd1
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => a5b30722-cc82-4c7e-9a3f-5b5705c67f8b
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 1c3f251a-ae42-41bd-8d59-71558a00280e
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 13:16:03
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => ba855170-6770-4ef6-837a-570eb4a17f7d
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 07911808-129b-48b2-8c54-0265cb1796fb
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => fe702a30-596a-49de-b43c-a4bac30169ed
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 859e6d33-5356-4948-8031-6ba473f90fc2
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => ad0be467-4dd1-40d1-b791-050c7b33fc93
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 614614a4-c795-4923-8484-2022e8b28cff
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 13:33:03
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => d2b9842d-2667-437a-83da-36644761edc4
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 756e0829-7519-4852-b579-b49816842ee5
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 4a598900-0a16-4275-a04c-39be835e3f9e
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 94a54f2e-ee75-48be-bf8a-cf71987285aa
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 635df7b4-9c8d-4b1b-ab57-7a2e3795552d
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => a5de64c2-c5cd-4f0e-96c9-4c30d232476e
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-10 13:44:53
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 80219964-90ea-4497-85b0-114f338988ce
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 79aa5d52-9c11-4750-b2bb-ca0a6da799e0
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 953fd513-2819-4578-a151-160d8f6801fd
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 6564378d-277c-4a88-8047-c19db3cc81d2
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 8b0bc9aa-4ad4-4799-ac7e-894478341893
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 7afb6cad-6e48-4f47-b6d6-1bb51accb40b
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxxxxxx
+    [d_title_en] => zxxxxx
+    [d_data6] => zxxxx
+    [d_date] => 2026-04-10 16:18:42
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxxxxx
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 86530577-be8a-4f87-bb8f-8be79f6fe3fb
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 63cb07fd-e1ef-41b3-9b70-a8ed4a659887
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => single
+                )
+
+            [2] => Array
+                (
+                    [_uid] => f94560b4-6b31-47a2-8582-7f673e10f560
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => info
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zaa
+    [d_title_en] => zaa
+    [d_data6] => zaa
+    [d_date] => 2026-04-10 17:40:40
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => f2d47124-6570-418c-a165-3d3a9b85a70b
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => list_only
+                )
+
+            [1] => Array
+                (
+                    [_uid] => c3d6270b-9c2b-41fd-9d5e-68bafba25c3a
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => single
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 2ec23521-2f1e-4abb-9d00-b2d7eb83e147
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => info
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zzz
+    [d_title_en] => zzz
+    [d_data6] => zzz
+    [d_date] => 2026-04-10 18:05:06
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 6c4e7455-d8aa-495e-8c51-725a735dc6a2
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 36eaaf44-0887-45ee-8aba-b57e23d79b70
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => contactus
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 473e8d51-46f8-456f-8e41-c5b4ff24d099
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => info
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 09:57:17
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => f00c40bc-c78a-48e4-8531-a7b9df0670c3
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 5470cd53-172d-401f-b0c2-1fab402a05ab
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => f259229c-292c-4920-b357-d7a59b082f4e
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 05d72ba8-84e1-4f1d-815a-b0c761915cde
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 73c7b041-2ef0-4045-933f-aab5d0e799c3
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 6aacfff9-059f-43d3-9285-1a7f153ab7a4
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 10:25:55
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 58e6f047-bb78-4026-afda-b3a3c3633bea
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => bdb1c8c1-0775-4aee-a98d-8bfde5b643be
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 57a74373-8eb9-4f27-bb7e-532d30d082fc
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => e2683c19-cbd7-45ff-953c-6e10f505f706
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => a6ed0674-5b70-47db-a519-5f7fc19ccc24
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => dab5cfbc-a7b0-4e57-94f1-54b5bf58f382
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 10:48:04
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => f023b56d-473d-453c-a647-732dc7d2748e
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => bd7f2f67-9ab0-49a8-ada6-a5034229ad9a
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 05070b18-7a67-46dc-9a37-2cb29ef9ffd0
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => fb118edd-b753-461b-983d-bb5d4a4b426b
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 1c3fe2c8-bd4e-4bee-9a3a-5eb604a020b4
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 345fd1f4-871d-436a-8a1a-0d34daac43e9
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 10:54:07
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 3804c0f5-2a33-46d9-b4dd-c72a3971862c
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => fd7be89d-e236-4f36-95cd-efbedd0b6886
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => daa62628-e56e-4940-aa72-b9d469fa041d
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 278d85ff-3336-4966-9f3c-91cd62528312
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => ec407bdd-4568-465e-8a69-d88b1f0ee16f
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => info
+                )
+
+            [5] => Array
+                (
+                    [_uid] => b80c1fcc-553c-4b79-bdaf-f5823b0fee4d
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 11:18:10
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => af81d08a-d048-4a09-87a6-8c73bde37811
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 1a64e167-6c25-4aad-9748-d96d45ac2e20
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 1f74253c-bde9-4adf-9dd4-c07345c103b8
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 29ef415a-c6f3-4f2d-a6d1-ac10630caf03
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 9699c872-b0ca-44e5-a6da-ab566e6adce7
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => info
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 169601b9-9d72-4c2c-8d61-d7ceb17f87df
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 11:36:45
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_zxc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => cd8dcf03-2aa7-493e-87e7-a3759b0d2a9b
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => f8742418-6706-4ddd-afac-52bfb3d28b0b
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => list_only
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 924b6dac-5d80-4e85-9745-54a925bffbd8
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 51ade4c6-469c-484a-bc92-74c55e96ac05
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => b4e0ff2b-a115-4f5f-88dc-4b56172350d1
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => single
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 8df81f74-66de-4544-8a68-7c8e864c4612
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => abc
+    [d_title_en] => abc
+    [d_data6] => abc
+    [d_date] => 2026-04-13 11:48:37
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_abc
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => f7b2c72d-da02-4ddd-b8fa-154c0bd96125
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 4885d2e0-8243-4689-9bd0-461edb9bc52d
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => a191ec36-9a24-45ac-b835-cb2aee274778
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => f4462847-c882-47ab-a202-3182c2a73850
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => cba5fcfa-c806-4b89-906f-67862489d722
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => single
+                )
+
+            [5] => Array
+                (
+                    [_uid] => b3cdde7d-0b04-4968-b5c8-3b440435c39f
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zzzzzzzzzzzz
+    [d_title_en] => zzzzz
+    [d_data6] => zzzz
+    [d_date] => 2026-04-13 12:04:18
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 81d02cb4-51ce-4209-89d7-2e1ec51482bf
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => b84d63f3-7da6-4dfa-971d-854468edf670
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 8c0fb396-4c41-460f-9377-b11906cf82ea
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 7f2c35cc-2e2f-4026-be38-44df837739f2
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 32257b8b-6443-4195-bb1d-f213ed06e432
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => single
+                )
+
+            [5] => Array
+                (
+                    [_uid] => dd857ea3-a826-4674-ac16-98135d7b9292
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 12:18:27
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 1c7a4e31-ad8d-4524-9606-15ff6396fb57
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 0e5a2850-72ce-456a-95b5-bf4a2191d8d2
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => multi
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 040a5857-0846-4a88-bd88-41e4e9dcf623
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => c6be095b-8030-4d31-8a8c-dc60bee16c18
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 64e96679-2bab-48ec-ad6f-00e7861141e5
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => info
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 0be2b4b2-ab1e-4292-849c-d889909b9518
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 12:29:13
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 4762902f-6751-497b-a778-05cc97c6cce2
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => multi
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 65fdbbbe-ed4b-4443-8202-0b53076f0dea
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => single
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 6ccf6d7f-91e4-4fcd-ba1f-3f4f31ca77bb
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => info
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 3f4bb69e-7ca3-4e77-9bb5-dafe4ec39832
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => list_only
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 15:16:33
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 1d1dad73-1735-4cd0-ac4d-cba3a27a7a57
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => 2196b6ad-adcf-4e9f-ab6b-9ec380a366da
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => info
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zxc
+    [d_title_en] => zxc
+    [d_data6] => zxc
+    [d_date] => 2026-04-13 15:51:17
+    [d_active] => 1
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => f2b9bdc9-aed0-46d4-b038-72ef902570f5
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+        )
+
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zap
+    [d_title_en] => zap
+    [d_data6] => zap
+    [d_date] => 2026-04-13 16:43:41
+    [d_active] => 1
+    [d_data1] => localhost
+    [d_data2] => db_zap
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 72679580-1f93-4cb1-85f6-61cb096c2d84
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => b814267c-295f-45dc-8394-104b44aae23f
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => info
+                )
+
+            [2] => Array
+                (
+                    [_uid] => a5080908-0e03-4026-ab99-86f8127fe674
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 2dc148f5-c049-4957-ab09-af8d49cb1c31
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 3c95dd4b-8005-470c-9793-b8b73df1cd2f
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => f34d7e74-e838-49f6-81c8-88ce7a1ed1b9
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_insert] => form1
+    [d_id] => 0
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zss
+    [d_title_en] => zss
+    [d_data6] => zss
+    [d_date] => 2026-04-13 17:04:11
+    [d_active] => 1
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 73efd04f-6725-49ea-8156-73ce3a38d9b1
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => d09462ef-7d01-4d11-950b-fb5277e8668c
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => single
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 7d7e2801-ae31-42eb-a0ef-4a947322b602
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 1c1fed23-69bb-4708-9914-0ffa4a97c017
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 64a30431-e834-4b15-908d-90713c287cd5
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 123c43a4-4c94-4a3e-88ac-cc45a7c35d20
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+)
+
+================
+=== POST DUMP ===
+Array
+(
+    [MM_update] => form1
+    [d_id] => 65
+    [lang] => tw
+    [d_class1] => websites
+    [d_title] => zss
+    [d_title_en] => zss
+    [d_data6] => zss
+    [d_date] => 2026-04-13 17:04:11
+    [d_active] => 1
+    [d_data1] => localhost
+    [d_data2] => db_test
+    [d_data3] => 
+    [d_data4] => 
+    [d_data5] => Array
+        (
+            [0] => news
+            [1] => product
+            [2] => contactus
+        )
+
+    [custom_modules] => Array
+        (
+            [0] => Array
+                (
+                    [_uid] => 73efd04f-6725-49ea-8156-73ce3a38d9b1
+                    [m_name] => 部落格
+                    [m_slug] => blog
+                    [m_type] => single
+                )
+
+            [1] => Array
+                (
+                    [_uid] => d09462ef-7d01-4d11-950b-fb5277e8668c
+                    [m_name] => 品牌
+                    [m_slug] => brand
+                    [m_type] => single
+                )
+
+            [2] => Array
+                (
+                    [_uid] => 7d7e2801-ae31-42eb-a0ef-4a947322b602
+                    [m_name] => 服務
+                    [m_slug] => service
+                    [m_type] => contactus
+                )
+
+            [3] => Array
+                (
+                    [_uid] => 1c1fed23-69bb-4708-9914-0ffa4a97c017
+                    [m_name] => 關於我們
+                    [m_slug] => about
+                    [m_type] => info
+                )
+
+            [4] => Array
+                (
+                    [_uid] => 64a30431-e834-4b15-908d-90713c287cd5
+                    [m_name] => 年份
+                    [m_slug] => year
+                    [m_type] => list_only
+                )
+
+            [5] => Array
+                (
+                    [_uid] => 123c43a4-4c94-4a3e-88ac-cc45a7c35d20
+                    [m_name] => 門市據點
+                    [m_slug] => store
+                    [m_type] => single
+                )
+
+        )
+
+    [d_data7] => 
+    [d_data8] => 
+    [d_content] => 
+)
+
+================

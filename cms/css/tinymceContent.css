@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+p.notep:before,
+p.notep2:before {
+    content: '';
+    display: block;
+    background-color: #595757;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    top: 7px;
+    left: 0;
+}
+
+p.notep{
+	position: relative;
+    padding-left: 9px;
+    margin: 0;
+}
+p.notep2{
+	position: relative;
+    padding-left: 9px;
+    margin: 0 0 5px 0;
+}

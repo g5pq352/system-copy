@@ -1,0 +1,1056 @@
+@charset "UTF-8";
+/* =========================================
+    Variables
+========================================= */
+/* =========================================
+    Global & Layout
+========================================= */
+.app-wrapper {
+  display: flex;
+  font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+}
+
+/* =========================================
+    Buttons Base
+========================================= */
+.btn, .bulk-actions .bulk-delete-btn, .upload-box button, .trash-toolbar .upload-box button, .upload-box .trash-toolbar button, .trash-toolbar .btn, .trash-toolbar .nav-btn, .trash-toolbar .new-sub-folder-form button, .new-sub-folder-form .trash-toolbar button, .trash-toolbar .card-actions button, .card-actions .trash-toolbar button, .card-actions button, .new-sub-folder-form button, .sidebar .new-folder-form button, .nav-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  font-size: 13px;
+  transition: filter 0.1s, opacity 0.2s;
+  white-space: nowrap;
+}
+.btn:hover, .bulk-actions .bulk-delete-btn:hover, .upload-box button:hover, .card-actions button:hover, .new-sub-folder-form button:hover, .sidebar .new-folder-form button:hover, .nav-btn:hover {
+  filter: brightness(0.95);
+}
+.btn.primary, .bulk-actions .primary.bulk-delete-btn, .upload-box button.primary, .card-actions button.primary, .new-sub-folder-form button.primary, .sidebar .new-folder-form button.primary, .primary.nav-btn {
+  background: #4a8ef0;
+  color: #fff;
+}
+.btn.upload, .bulk-actions .upload.bulk-delete-btn, .upload-box button.upload, .card-actions button.upload, .new-sub-folder-form button.upload, .sidebar .new-folder-form button.upload, .upload.nav-btn {
+  background: #4a8ef0;
+  color: #fff;
+  width: 200px;
+}
+.btn.secondary, .bulk-actions .secondary.bulk-delete-btn, .upload-box button.secondary, .card-actions button.secondary, .new-sub-folder-form button.secondary, .sidebar .new-folder-form button.secondary, .secondary.nav-btn {
+  background: #f3f5fb;
+  color: #333;
+}
+.btn.bulk, .bulk-actions .bulk.bulk-delete-btn, .upload-box button.bulk, .card-actions button.bulk, .new-sub-folder-form button.bulk, .sidebar .new-folder-form button.bulk, .bulk.nav-btn {
+  background: #4a8ef0;
+}
+.btn.danger, .bulk-actions .danger.bulk-delete-btn, .upload-box button.danger, .card-actions button.danger, .new-sub-folder-form button.danger, .sidebar .new-folder-form button.danger, .danger.nav-btn {
+  background: #ea4335;
+}
+.btn:disabled, .bulk-actions .bulk-delete-btn:disabled, .upload-box button:disabled, .card-actions button:disabled, .new-sub-folder-form button:disabled, .sidebar .new-folder-form button:disabled, .nav-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.nav-btn {
+  width: 100%;
+  padding: 9px;
+  margin-top: 6px;
+}
+
+/* =========================================
+    Sidebar
+========================================= */
+.sidebar {
+  width: 280px;
+  background: #fff;
+  padding: 16px;
+  overflow-y: auto;
+  height: -moz-max-content;
+  height: max-content;
+  position: sticky;
+  top: 0;
+}
+.sidebar h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+.sidebar .new-folder-form {
+  margin: 10px 0 14px;
+}
+.sidebar .new-folder-form input {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.sidebar .new-folder-form button {
+  width: 100%;
+  padding: 8px;
+  background: #34a853;
+  color: #fff;
+  font-size: 13px;
+}
+.sidebar .new-folder-form button:hover {
+  background: #288140;
+}
+.sidebar hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+/* =========================================
+    Tree View (側邊欄資料夾樹)
+========================================= */
+.tree-node,
+.tree-folder {
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: 0.15s;
+  position: relative;
+}
+.tree-node:hover,
+.tree-folder:hover {
+  background: #f3f5fb;
+}
+.tree-node:hover .delete-icon,
+.tree-node:hover .rename-icon,
+.tree-folder:hover .delete-icon,
+.tree-folder:hover .rename-icon {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+.tree-node.active,
+.tree-folder.active {
+  background: #4a8ef0;
+  color: #fff;
+}
+.tree-node.dragging,
+.tree-folder.dragging {
+  opacity: 0.4;
+  transform: scale(0.97);
+}
+.tree-node.drop-target,
+.tree-folder.drop-target {
+  background: rgba(74, 142, 240, 0.12);
+  border: 1px dashed #4a8ef0;
+}
+.tree-node .tree-toggle,
+.tree-folder .tree-toggle {
+  width: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+.tree-node .tree-label,
+.tree-folder .tree-label {
+  padding-right: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tree-node .tree-arrow,
+.tree-folder .tree-arrow {
+  width: 12px;
+  transition: 0.2s;
+}
+.tree-node .tree-arrow.open,
+.tree-folder .tree-arrow.open {
+  transform: rotate(90deg);
+}
+
+.rename-icon {
+  color: #fbbc04;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: 0.2s;
+  opacity: 0;
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+}
+.rename-icon:hover {
+  color: #c99603;
+  background-color: rgba(251, 188, 4, 0.1);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.delete-icon {
+  color: #ea4335;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: 0.2s;
+  opacity: 0;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+}
+.delete-icon:hover {
+  color: #d62516;
+  background-color: rgba(234, 67, 53, 0.1);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.tree-children {
+  padding-left: 12px;
+  margin-left: 10px;
+  display: none;
+}
+.tree-children.open {
+  display: block;
+}
+
+/* =========================================
+    Main Panel & Header
+========================================= */
+.main {
+  flex: 1;
+  padding: 24px;
+  text-align: left;
+  border-left: 1px solid #ddd;
+}
+.main .main-header {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.main .main-header .header-left {
+  flex: 1 1 auto;
+}
+.main .main-header .main-title {
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+.main .main-header .main-path {
+  font-size: 13px;
+  color: #666;
+}
+.main .main-header .sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+.main .main-header .sort-controls label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+.main .main-header .sort-controls .sort-select {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 160px;
+}
+.main .main-header .sort-controls .sort-select:hover {
+  border-color: #4a8ef0;
+}
+.main .main-header .sort-controls .sort-select:focus {
+  outline: none;
+  border-color: #4a8ef0;
+  box-shadow: 0 0 0 2px rgba(74, 142, 240, 0.1);
+}
+.main .nav-btn.upload {
+  margin-bottom: 16px;
+}
+
+.new-sub-folder-form {
+  margin-bottom: 14px;
+  display: flex;
+  gap: 6px;
+  max-width: 420px;
+}
+.new-sub-folder-form input {
+  flex: 1;
+  padding: 7px 9px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+}
+.new-sub-folder-form button {
+  padding: 7px 11px;
+  background: #34a853;
+  color: #fff;
+}
+.new-sub-folder-form button:hover {
+  background: #288140;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+.card-grid .card-actions {
+  position: static;
+}
+
+/* =========================================
+    Folder & Image Cards (主要內容區塊卡片)
+========================================= */
+.folder-card,
+.img-card {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #e0e3ea;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+  transition: 0.15s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.folder-card.folder-card,
+.img-card.folder-card {
+  padding: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+.folder-card:hover,
+.img-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.folder-card.dragging,
+.img-card.dragging {
+  opacity: 0.4;
+  transform: scale(0.96);
+}
+.folder-card.drop-target,
+.img-card.drop-target {
+  border-color: #4a8ef0;
+  background: rgba(74, 142, 240, 0.06);
+}
+.folder-card.img-card .img-check,
+.img-card.img-card .img-check {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  transform: scale(1.4);
+  z-index: 10;
+}
+.folder-card.img-card > a,
+.img-card.img-card > a {
+  display: block;
+  line-height: 0;
+}
+.folder-card.img-card img,
+.img-card.img-card img {
+  width: 100%;
+  height: 140px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+.folder-card.img-card .img-name,
+.img-card.img-card .img-name {
+  font-size: 13px;
+  margin-top: 4px;
+  word-break: break-all;
+}
+.folder-card.img-card .img-path,
+.img-card.img-card .img-path {
+  word-wrap: break-word;
+}
+
+.folder-icon {
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+
+.folder-name {
+  font-size: 14px;
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+
+.card-actions {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+.card-actions button {
+  padding: 4px 8px;
+  font-size: 11px;
+}
+.card-actions button.btn-trash-file-restore, .card-actions button.btn-trash-file-delete {
+  flex-grow: 1;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.card-actions button.btn-rename {
+  background: #fbbc04;
+  color: #333;
+}
+.card-actions button.btn-delete {
+  background: #ea4335;
+  color: #fff;
+}
+.card-actions button.btn-restore {
+  background: #3ba755;
+  color: #fff;
+}
+.card-actions button.btn-delete-perm {
+  background: #9e9e9e;
+  color: #fff;
+}
+.card-actions button.btn-copy-link {
+  background: #6c757d;
+  color: #fff;
+}
+
+/* =========================================
+    Trash Page List View (已刪除資料夾列表樣式)
+========================================= */
+.trash-section {
+  margin-bottom: 32px;
+}
+.trash-section .trash-note {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.trash-toolbar {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.trash-toolbar label {
+  margin-right: 0;
+  font-size: 14px;
+  color: #333;
+}
+.trash-toolbar .btn, .trash-toolbar .bulk-actions .bulk-delete-btn, .bulk-actions .trash-toolbar .bulk-delete-btn, .trash-toolbar .upload-box button, .upload-box .trash-toolbar button, .trash-toolbar .nav-btn, .trash-toolbar .sidebar .new-folder-form button, .sidebar .new-folder-form .trash-toolbar button, .trash-toolbar .new-sub-folder-form button, .new-sub-folder-form .trash-toolbar button, .trash-toolbar .card-actions button, .card-actions .trash-toolbar button {
+  padding: 8px 15px;
+  opacity: 0.6;
+}
+
+.folder-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.folder-card .folder-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.folder-card .folder-name-group {
+  overflow: hidden;
+}
+.folder-card .folder-name-group .folder-name-title {
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.folder-card .folder-name-group .folder-name-path {
+  font-size: 0.75rem;
+  color: #666;
+}
+.folder-card .folder-preview {
+  display: flex;
+  gap: 4px;
+  background: #f0f0f0;
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  height: 60px;
+}
+.folder-card .folder-preview img {
+  width: 25%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 3px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+.folder-card .folder-preview .no-img {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 0.8rem;
+}
+.folder-card .folder-count {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+/* =========================================
+    Trash Page Detail View (資料夾內容瀏覽)
+========================================= */
+.browser-header {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #555;
+  flex-wrap: wrap;
+}
+.breadcrumb a {
+  text-decoration: none;
+  color: #4a8ef0;
+  font-weight: 500;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb span.sep {
+  color: #ccc;
+}
+
+.browser-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.detail-item {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+  transition: 0.2s;
+}
+.detail-item .card-actions {
+  position: static;
+}
+.detail-item:hover {
+  background: #f9f9f9;
+  border-color: #ddd;
+}
+.detail-item .detail-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  display: block;
+  text-decoration: none;
+  line-height: 1;
+}
+.detail-item .detail-thumb {
+  width: 100%;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+.detail-item .detail-name {
+  font-size: 0.85rem;
+  color: #333;
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+a.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+a.card-link.is-image {
+  height: -moz-max-content;
+  height: max-content;
+}
+
+/* =========================================
+    Upload Page
+========================================= */
+.upload-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.upload-box {
+  background: #fff;
+  padding: 26px;
+  width: 820px;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+.upload-box h2 {
+  margin: 0 0 16px;
+}
+.upload-box label {
+  font-weight: bold;
+}
+.upload-box select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin: 6px 0 12px;
+}
+.upload-box button {
+  width: 100%;
+  padding: 10px;
+  background: #4a8ef0;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+}
+.upload-box button:hover {
+  background: #3367d6;
+}
+.upload-box button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.drop-area {
+  padding: 40px;
+  margin-bottom: 15px;
+  text-align: center;
+  border: 2px dashed #4a8ef0;
+  background: #f9fbff;
+  border-radius: 12px;
+  color: #4a8ef0;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.drop-area.dragover {
+  background: #d9e6ff;
+  border-color: #105ac4;
+  color: #105ac4;
+}
+
+#preview {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.preview-item {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+}
+.preview-item img {
+  width: 100%;
+  height: 120px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 6px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+}
+.preview-item .meta {
+  margin-top: 4px;
+  color: #777;
+  word-break: break-all;
+}
+.preview-item .status {
+  font-size: 13px;
+  margin-top: 4px;
+  color: #777;
+}
+.preview-item .status.success {
+  color: #34a853;
+  font-weight: bold;
+}
+.preview-item .status.fail {
+  color: #ea4335;
+  font-weight: bold;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #eee;
+  border-radius: 4px;
+  margin: 8px 0;
+  overflow: hidden;
+}
+.progress-bar .progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #4a8ef0;
+  transition: width 0.2s;
+}
+
+.cancel-btn {
+  background: #ea4335;
+  color: #fff;
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.link-row {
+  margin-top: 12px;
+  font-size: 13px;
+}
+.link-row a {
+  color: #4a8ef0;
+  text-decoration: none;
+}
+.link-row a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+    Bulk Actions (Gallery)
+========================================= */
+.bulk-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 15px 0;
+}
+.bulk-actions .bulk-delete-btn {
+  background: #ea4335;
+  color: #fff;
+  padding: 8px 18px;
+  font-size: 14px;
+}
+
+.img-card .img-check {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  transform: scale(1.4);
+}
+
+/* =========================================
+    RWD / Mobile Layout
+========================================= */
+@media (max-width: 992px) {
+  .app-wrapper {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+  .sidebar h3 {
+    display: none;
+  }
+  .main {
+    padding: 15px;
+  }
+  .main .main-header {
+    margin-bottom: 12px;
+  }
+  .main .main-title {
+    font-size: 18px !important;
+  }
+  .tree-node,
+  .tree-folder {
+    padding: 8px 10px;
+    margin-left: 0;
+    font-size: 14px;
+  }
+  .tree-children {
+    padding-left: 10px;
+    margin-left: 10px;
+  }
+  .trash-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .trash-toolbar label {
+    margin-bottom: 5px;
+  }
+  .trash-toolbar .btn, .trash-toolbar .nav-btn, .trash-toolbar .sidebar .new-folder-form button, .sidebar .new-folder-form .trash-toolbar button, .trash-toolbar .new-sub-folder-form button, .new-sub-folder-form .trash-toolbar button, .trash-toolbar .card-actions button, .card-actions .trash-toolbar button, .trash-toolbar .upload-box button, .upload-box .trash-toolbar button, .trash-toolbar .bulk-actions .bulk-delete-btn, .bulk-actions .trash-toolbar .bulk-delete-btn {
+    width: 100%;
+    padding: 10px 15px;
+  }
+  .upload-wrapper {
+    padding: 30px 15px;
+  }
+  .upload-box {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .card-grid,
+  .detail-grid {
+    grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+    gap: 10px;
+  }
+  .img-card {
+    padding: 8px;
+  }
+  .img-card img {
+    height: 100px;
+    border-radius: 6px;
+  }
+  #preview {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .folder-card .folder-header .folder-icon {
+    font-size: 28px;
+  }
+  .folder-card .folder-preview {
+    height: 50px;
+  }
+  .browser-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+  }
+  .breadcrumb {
+    width: 100%;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .browser-actions {
+    width: 100%;
+    gap: 8px;
+  }
+  .browser-actions button {
+    flex-grow: 1;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  .detail-item .detail-thumb {
+    height: 120px;
+  }
+  .card-actions {
+    gap: 4px;
+  }
+  .card-actions button {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+  .card-actions .btn-trash-file-restore,
+  .card-actions .btn-trash-file-delete {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 480px) {
+  .card-grid,
+  .detail-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .preview-item {
+    width: 100%;
+  }
+  #preview {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+/* =========================================
+    Upload Page
+========================================= */
+.file-list-container {
+  margin-top: 15px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px 10px;
+}
+
+.progress-item {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  border: 1px solid #e0e3ea;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.progress-item .preview {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+}
+.progress-item .preview img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.progress-item .info-box {
+  flex-grow: 1;
+  text-align: left;
+}
+.progress-item .info-box .meta {
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.progress-item .info-box .status {
+  font-size: 12px;
+  margin-top: 4px;
+}
+.progress-item .cancel-btn {
+  margin: 0;
+  align-self: center;
+  background: #ea4335;
+  color: #fff;
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  min-width: 30px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #eee;
+  border-radius: 4px;
+  margin: 8px 0;
+  overflow: hidden;
+}
+.progress-bar .progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #4a8ef0;
+  transition: width 0.2s;
+}
+
+/* RWD media query block for .file-list-container is now unnecessary */
+/* =========================================
+    Modal (燈箱) 基礎樣式
+========================================= */
+.modal {
+  display: none;
+  /* 預設隱藏 */
+  position: fixed;
+  /* 保持在視窗中央 */
+  z-index: 1000;
+  /* 確保在其他元素之上 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* 內容超出時可捲動 */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* 黑色半透明背景 */
+  /* 讓 Modal 內容垂直置中 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 50%;
+  /* 限制 Modal 最大寬度 */
+  position: relative;
+  /* 確保關閉按鈕定位正確 */
+  animation: fadeIn 0.3s ease-out;
+  /* 新增淡入動畫 */
+  height: 90vh;
+  overflow-y: auto;
+}
+@media screen and (max-width: 1200px) {
+  .modal-content {
+    max-width: 80%;
+  }
+}
+.modal-content .upload-container .upload-actions {
+  margin-top: 20px;
+}
+
+.close-btn {
+  color: #777;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  /* 定位到右上角 */
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: #4a8ef0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}/*# sourceMappingURL=style.css.map */

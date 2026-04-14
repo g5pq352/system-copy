@@ -1,0 +1,64 @@
+.modal-crop {
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999; 
+    justify-content: center; 
+    align-items: center;
+    overflow: hidden;
+}
+
+.modal-crop .modal-content {
+    background: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    width: 90%; 
+    max-width: 800px; 
+    max-height: 90vh; 
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.img-container {
+    width: 100%;
+    height: 500px; /* 固定高度讓 Cropper 發揮 */
+    background: #f0f0f0;
+    overflow: hidden;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+}
+
+.img-container > img {
+    display: block;
+    max-width: 100%;
+}
+
+/* 按鈕樣式 */
+.crop-action-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    margin: 0 5px;
+    transition: opacity 0.2s;
+}
+.crop-action-btn:hover { opacity: 0.9; }
+.crop-action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-green { background-color: #28a745; }
+.btn-red { background-color: #dc3545; }
+.btn-gray { background-color: #6c757d; }
+
+.preview-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* 隱藏原生 File Input */
+.hidden-file-input { display: none; }

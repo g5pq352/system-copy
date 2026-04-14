@@ -1,0 +1,98 @@
+[2026-04-09 10:02:58] Error in App\Controllers\AdminController::delete: There is no active transaction
+[2026-04-09 10:53:14] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 10:59:28] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 11:18:59] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 11:26:22] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 11:30:59] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 11:41:25] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 11:48:29] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 11:48:35] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 11:53:41] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 11:53:54] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:05:30] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:05:34] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:07:54] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:07:58] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:12:53] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:12:58] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:25:09] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:25:49] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:29:05] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:29:10] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:48:16] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:48:48] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:54:50] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 12:54:54] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 13:11:44] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 13:11:52] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 13:23:45] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 13:24:11] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 13:47:11] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 13:51:33] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 15:45:50] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 15:54:29] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 15:58:06] Warning: Failed to delete sub-site directory: D:\wamp64\www\qqq
+[2026-04-09 16:11:00] Warning: Failed to delete sub-site directory: D:\wamp64\www\test
+[2026-04-09 16:57:08] Warning: Failed to delete sub-site directory: D:\wamp64\www\test
+[2026-04-09 17:30:03] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 17:35:36] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 18:00:13] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-09 18:41:30] Warning: Failed to delete sub-site directory: D:\wamp64\www\test
+[2026-04-10 10:35:16] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-10 10:46:32] Warning: Failed to delete sub-site directory: D:\wamp64\www\測試網站
+[2026-04-10 10:52:56] Warning: Failed to delete sub-site directory: D:\wamp64\www\test
+[2026-04-10 10:57:31] Warning: Failed to delete sub-site directory: D:\wamp64\www\test
+[2026-04-10 11:10:00] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 11:10:04] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 11:20:30] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 11:20:34] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 11:28:08] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 11:28:11] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 11:38:06] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 11:38:10] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 11:43:11] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 11:43:14] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 13:09:46] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 13:09:49] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 13:15:52] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 13:15:56] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 13:32:15] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 13:32:19] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 13:42:32] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 13:42:36] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 14:23:14] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-10 14:23:18] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 17:40:28] [FOLDER DELETE] Attempting: D:\wamp64\www\zxxxxxx | exists=NO
+[2026-04-10 17:40:28] [FOLDER DELETE] SKIP: directory does not exist at D:\wamp64\www\zxxxxxx
+[2026-04-10 18:03:50] [FOLDER DELETE] Attempting: D:\wamp64\www\zaa | exists=YES
+[2026-04-10 18:03:54] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-10 18:08:03] [FOLDER DELETE] Attempting: D:\wamp64\www\zzz | exists=YES
+[2026-04-10 18:08:07] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 10:22:51] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 10:22:55] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 10:46:01] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 10:46:05] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 10:53:39] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 10:53:43] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 11:17:40] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 11:17:44] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 11:30:33] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 11:30:36] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 11:46:22] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 11:46:25] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 12:00:46] [FOLDER DELETE] Attempting: D:\wamp64\www\abc | exists=YES
+[2026-04-13 12:00:49] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 12:09:24] [FOLDER DELETE] Attempting: D:\wamp64\www\zzzzzzzzzzzz | exists=NO
+[2026-04-13 12:09:24] [FOLDER DELETE] SKIP: directory does not exist at D:\wamp64\www\zzzzzzzzzzzz
+[2026-04-13 12:26:51] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 12:26:55] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 15:14:42] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 15:14:47] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 15:51:11] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 15:51:14] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 15:52:55] [FOLDER DELETE] Attempting: D:\wamp64\www\zxc | exists=YES
+[2026-04-13 15:52:59] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-13 17:04:04] [FOLDER DELETE] Attempting: D:\wamp64\www\zap | exists=YES
+[2026-04-13 17:04:08] [FOLDER DELETE] Result: GONE | rmdir_return=true
+[2026-04-14 15:33:37] [FOLDER DELETE] Attempting: D:\wamp64\www\zss | exists=YES
+[2026-04-14 15:33:41] [FOLDER DELETE] Result: GONE | rmdir_return=true

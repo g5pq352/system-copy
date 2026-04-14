@@ -1,0 +1,1 @@
+<?php echo SYSTEM_NAME; ?>

@@ -1,0 +1,18 @@
+#php_value upload_max_filesize 512M
+#php_value post_max_size 512M
+#php_value memory_limit 512M
+#php_value max_execution_time 600
+#php_value max_input_time 600
+
+# 增加php單次上傳檔案數(預設20)
+#php_value max_file_uploads 40
+
+# ===== Modular Backend URL Rewriting =====
+RewriteEngine On
+
+# Module list page: tpl=blog/list -> list.php?module=blog
+RewriteRule ^tpl=([a-zA-Z0-9_-]+)/list$ list.php?module=$1 [L,QSA]
+# Module detail page: tpl=blog/detail -> detail.php?module=blog&action=edit
+RewriteRule ^tpl=([a-zA-Z0-9_-]+)/detail$ detail.php?module=$1&action=edit [L,QSA]
+# Module info page: tpl=popSet/info -> info.php?module=popSet
+RewriteRule ^tpl=([a-zA-Z0-9_-]+)/info$ info.php?module=$1 [L,QSA]
