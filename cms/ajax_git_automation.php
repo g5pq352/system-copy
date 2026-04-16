@@ -153,77 +153,108 @@ try {
         shell_exec('git config user.email "auto@cms-automation.com"');
         shell_exec('git config user.name "CMS Automation"');
         
-        // --- Windows 效能特別優化 ---
-        shell_exec('git config core.fscache true');
+        // --- 通用效能優化 (Windows + Linux 都支援) ---
         shell_exec('git config core.preloadindex true');
-        shell_exec('git config core.fscache true'); // 重複確認
-        shell_exec('git config gc.auto 0'); // 關閉自動回收，減少 add 負擔
+        shell_exec('git config core.untrackedCache true');
+        shell_exec('git config gc.auto 0');
+
+        // --- Windows 獨有優化 ---
+        if (PHP_OS_FAMILY === 'Windows') {
+            shell_exec('git config core.fscache true');   // NTFS 快取，Linux 無此概念
+            shell_exec('git config core.fsmonitor true'); // Windows FSMonitor
+        }
+        // --- Linux / 雲端主機優化 ---
+        else {
+            // 開啟 mtime 快取，Linux 上用這個替代 fscache
+            shell_exec('git config core.checkStat minimal');
+        }
     }
+
+    updateProgress('正在準備 Git 索引與效能環境...');
 
     // 設定遠端 (先移除舊的以防萬一)
     shell_exec("git remote remove origin 2>&1");
     $authRepoUrl = str_replace("https://", "https://{$githubToken}@", $repoUrl);
     shell_exec("git remote add origin {$authRepoUrl}");
 
-    // 加入檔案並提交
-    // --- 第一階段：連線測試 (只推 .gitignore) ---
-    updateProgress('第一階段：測試連線中 (只推 .gitignore)...');
-    
-    // 強制重置 index 確保測試乾淨
-    shell_exec("git rm -r --cached . 2>&1");
-    shell_exec("git add .gitignore 2>&1");
-    shell_exec('git commit -m "Stage 1: Connection Test" 2>&1');
-    shell_exec("git branch -M main 2>&1");
-    
-    $testPush = shell_exec("git push -u origin main 2>&1");
-    
-    if (strpos($testPush, 'rejected') !== false || strpos($testPush, 'error') !== false || strpos($testPush, 'fatal') !== false) {
-        file_put_contents(__DIR__ . '/git_debug_log.txt', "[" . date('Y-m-d H:i:s') . "] Stage 1 Failed: {$testPush}\n", FILE_APPEND);
-        echo json_encode(['success' => false, 'message' => "第一階段連線測試失敗：\n" . substr($testPush, 0, 100)]);
-        exit;
+    $hasCommits = shell_exec("git log --oneline -1 2>&1");
+    $isFirstPush = empty(trim($hasCommits));
+
+    if ($isFirstPush) {
+        // === 首次推送：連線測試 + 完整掃描 ===
+        updateProgress('第一次推送：測試 GitHub 連線...');
+        shell_exec("git add .gitignore 2>&1");
+        shell_exec('git commit -m "Stage 1: Connection Test" 2>&1');
+        shell_exec("git branch -M main 2>&1");
+        $testPush = shell_exec("git push -u origin main 2>&1");
+        if (strpos($testPush, 'rejected') !== false || strpos($testPush, 'fatal') !== false) {
+            file_put_contents(__DIR__ . '/git_debug_log.txt', "[" . date('Y-m-d H:i:s') . "] Stage 1 Failed: {$testPush}\n", FILE_APPEND);
+            echo json_encode(['success' => false, 'message' => "GitHub 連線測試失敗：\n" . substr($testPush, 0, 200)]);
+            exit;
+        }
+
+        updateProgress('連線成功！正在加入根目錄與核心邏輯 (1/5)...');
+        shell_exec("git add index.php .htaccess .gitignore composer.json package.json 2>&1");
+        shell_exec("git add app/ config/ Connections/ sql/ 2>&1");
+
+        updateProgress('正在加入 CMS 後台 (2/5)...');
+        shell_exec("git add cms/ 2>&1");
+
+        updateProgress('正在加入前台模板 (3/5)...');
+        shell_exec("git add template/ 2>&1");
+
+        updateProgress('正在加入套件庫 (4/5)...');
+        shell_exec("git add vendor/ 2>&1");
+
+        updateProgress('正在加入上傳目錄 (5/5)...');
+        shell_exec("git add upload_image/ upload_file/ uploads/ 2>&1");
+
+    } else {
+        // === 後續更新推送：只掃描有變動的檔案 ===
+        updateProgress('偵測到已有版本，僅處理變更檔案 (超快模式)...');
+        shell_exec("git branch -M main 2>&1");
+        shell_exec("git remote set-url origin {$authRepoUrl} 2>&1");
+
+        // git add -u：只處理「已追蹤」的變更，速度極快
+        shell_exec("git add -u 2>&1");
+
+        // 補上可能新增的未追蹤目錄（不做全量掃描）
+        updateProgress('檢查新增檔案...');
+        $untrackedDirs = ['upload_image', 'upload_file', 'uploads'];
+        foreach ($untrackedDirs as $dir) {
+            if (is_dir($localPath . DIRECTORY_SEPARATOR . $dir)) {
+                shell_exec("git add {$dir}/ 2>&1");
+            }
+        }
     }
 
-    // --- 第二階段：完整推送 ---
-    updateProgress('連線測試成功！正在處理核心代碼 (1/4)...');
-    shell_exec("git add index.php app/ config/ Connections/ sql/ 2>&1");
-    
-    updateProgress('正在處理前端資源與範本 (2/4)...');
-    shell_exec("git add template/ public/ css/ js/ 2>&1");
-    
-    updateProgress('正在處理套件庫 (3/4：檔案較多請稍候)...');
-    shell_exec("git add vendor/ 2>&1"); 
-    
-    updateProgress('正在執行最後檔案彙整 (4/4)...');
-    shell_exec("git add -A 2>&1"); 
-    
-    shell_exec('git commit -m "Stage 2: Full content deployment (Optimized)" 2>&1');
-    
-    updateProgress('最終階段：正在將檔案推送到 GitHub，請勿關閉視窗...');
+    shell_exec('git commit -m "Deployment update" --allow-empty 2>&1');
+    shell_exec("git branch -M main 2>&1");
+
+    updateProgress('正在推送到 GitHub...');
     $fullPush = shell_exec("git push origin main 2>&1");
 
-    if (strpos($fullPush, 'rejected') !== false || strpos($fullPush, 'error') !== false || strpos($fullPush, 'fatal') !== false) {
+    if (strpos($fullPush, 'rejected') !== false || strpos($fullPush, 'fatal') !== false) {
         file_put_contents(__DIR__ . '/git_debug_log.txt', "[" . date('Y-m-d H:i:s') . "] Stage 2 Failed: {$fullPush}\n", FILE_APPEND);
-        echo json_encode(['success' => false, 'message' => "完整推送失敗，但連線已確認。可能是檔案較多導致超時：\n" . substr($fullPush, 0, 100)]);
+        echo json_encode(['success' => false, 'message' => "推送失敗：\n" . substr($fullPush, 0, 200)]);
         exit;
     }
 
-    // 7. 更新資料庫
-    updateProgress('正在回寫資料庫設定...');
+    // 7. 更新資料庫：只寫開發備註，不動前台網址(d_data7)
+    updateProgress('正在回寫開發筆記...');
     $gitRepoPublicUrl = "https://github.com/{$githubUser}/{$repoName}";
     $currentTime = date('Y-m-d H:i:s');
-    $noteAppend = "\n[Git History] Repo created and pushed at {$currentTime}.\nURL: {$gitRepoPublicUrl}";
+    $noteAppend = "\n[Git] 推送時間：{$currentTime}\nRepo：{$gitRepoPublicUrl}";
     
-    $updateStmt = $conn->prepare("UPDATE data_set SET d_data7 = :url, d_content = CONCAT(IFNULL(d_content, ''), :note) WHERE d_id = :id");
+    $updateStmt = $conn->prepare("UPDATE data_set SET d_content = CONCAT(IFNULL(d_content, ''), :note) WHERE d_id = :id");
     $updateStmt->execute([
-        ':url' => $gitRepoPublicUrl,
         ':note' => $noteAppend,
-        ':id' => $itemId
+        ':id'   => $itemId
     ]);
 
     echo json_encode([
         'success' => true, 
-        'message' => "成功！倉庫已建立並推送到 main 分支。\n連結: {$gitRepoPublicUrl}",
-        'url' => $gitRepoPublicUrl
+        'message' => "成功！已推送到 main 分支。\nRepo：{$gitRepoPublicUrl}",
     ]);
 
 } catch (Exception $e) {

@@ -1628,7 +1628,11 @@ SwalConfirmElement::render();
                 showErrorMsg(response.message);
             }
         } catch (e) {
-            showErrorMsg('網路通訊失敗');
+            console.error('刪除失敗詳情:', e);
+            let errorMsg = '網路通訊失敗';
+            if (e.status) errorMsg += ' (HTTP ' + e.status + ')';
+            if (e.statusText) errorMsg += ': ' + e.statusText;
+            showErrorMsg(errorMsg);
         }
     }
 

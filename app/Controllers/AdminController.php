@@ -1054,12 +1054,15 @@ class AdminController extends Controller
             if (is_dir($fullPath)) {
                 $this->recursiveRmdir($fullPath);
             } else {
+                // Windows 上 Git objects 是唯讀檔案，必須先移除唯讀屬性才能 unlink
+                @chmod($fullPath, 0777);
                 if (!@unlink($fullPath)) {
                     $this->log("[UNLINK FAIL] {$fullPath} | error=" . (error_get_last()['message'] ?? 'unknown'));
                 }
             }
         }
         
+        @chmod($path, 0777);
         $result = @rmdir($path);
         if (!$result) {
             $this->log("[RMDIR FAIL] {$path} | error=" . (error_get_last()['message'] ?? 'unknown'));
