@@ -973,7 +973,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$isTrashView) {
             // 【新增】子網站工廠 Hook
             // -----------------------------------------------------------------------
             if ($module === 'websites') {
-                SubsiteHelper::factory($conn, $redirectId, $_POST);
+                // [網站工廠] 三階段重構：此處不再自動執行實體化 (SubsiteHelper::factory)
+                // 改由編輯頁面的手動按鈕觸發
             }
 
             // -----------------------------------------------------------------------
@@ -1253,14 +1254,25 @@ if ($hasHierarchicalNav && $parentIdField) {
                                             <?php endif; ?>
                                             <?php if ($module === 'websites' && $d_id > 0): ?>
                                                 <?php 
+                                                $isInitialized = !empty($rowData['d_data8']);
                                                 $isPushed = !empty($rowData['d_data7']);
-                                                $btnLabel = $isPushed ? '已佈署到 Git' : 'Git 設定';
-                                                $btnAttr = $isPushed ? 'disabled' : 'onclick="handleGitPush(this)"';
-                                                $btnClass = $isPushed ? 'btn btn-secondary' : 'btn btn-dark';
-                                                ?>
-                                                <button type="button" id="gitPushBtn" class="<?= $btnClass ?> btn-md font-weight-semibold btn-py-2 px-4" data-id="<?= $d_id ?>" <?= $btnAttr ?>>
-                                                    <i class="fab fa-github"></i> <?= $btnLabel ?>
-                                                </button>
+                                                
+                                                if (!$isInitialized): ?>
+                                                    <!-- 階段 2: 實體化 (建立 DB 與資料夾) -->
+                                                    <button type="button" id="initSiteBtn" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4" data-id="<?= $d_id ?>" onclick="handleSiteInitialize(this)">
+                                                        <i class="fas fa-magic"></i> 初始化網站
+                                                    </button>
+                                                <?php else: ?>
+                                                    <!-- 階段 3: Git 推送 (僅在實體化後出現) -->
+                                                    <?php 
+                                                    $btnLabel = $isPushed ? '已佈署到 Git' : 'Git 設定';
+                                                    $btnAttr = $isPushed ? 'disabled' : 'onclick="handleGitPush(this)"';
+                                                    $btnClass = $isPushed ? 'btn btn-secondary' : 'btn btn-dark';
+                                                    ?>
+                                                    <button type="button" id="gitPushBtn" class="<?= $btnClass ?> btn-md font-weight-semibold btn-py-2 px-4" data-id="<?= $d_id ?>" <?= $btnAttr ?>>
+                                                        <i class="fab fa-github"></i> <?= $btnLabel ?>
+                                                    </button>
+                                                <?php endif; ?>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
@@ -2144,6 +2156,52 @@ $(document).ready(function() {
 <?php SwalConfirmElement::render(); ?>
 
 <script>
+// 網站工廠：二階段實體化 (建立 DB 與檔案)
+function handleSiteInitialize(element) {
+    const itemId = $(element).data('id');
+    let progressInterval;
+    
+    showProcessing('正在準備伺服器資源...');
+
+    // 啟動進度輪詢
+    progressInterval = setInterval(() => {
+        $.ajax({
+            url: 'ajax_git_status.php', // 使用現有的 status 輪詢機制
+            type: 'GET',
+            cache: false,
+            success: function(res) {
+                if (res.success && res.progress) {
+                    Swal.update({
+                        title: res.progress,
+                        showConfirmButton: false
+                    });
+                }
+            }
+        });
+    }, 800);
+
+    $.ajax({
+        url: 'ajax_site_initialize.php',
+        type: 'POST',
+        data: { item_id: itemId },
+        dataType: 'json',
+        success: function (response) {
+            clearInterval(progressInterval);
+            if (response.success) {
+                showSuccess('初始化成功！', '資料庫與檔案已就緒，現在可以進行 Git 推送。', () => {
+                    location.reload(); // 重新整理頁面以解鎖 Git 按鈕
+                });
+            } else {
+                showError('初始化失敗', response.message);
+            }
+        },
+        error: function () {
+            clearInterval(progressInterval);
+            showError('請求失敗', '建站過程超時或伺服器連線中斷');
+        }
+    });
+}
+
 // Git 自動化推送到 GitHub
 function handleGitPush(element) {
     const itemId = $(element).data('id');

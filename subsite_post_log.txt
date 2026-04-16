@@ -1,76 +1,10 @@
 === POST DUMP ===
 Array
 (
-    [MM_update] => form1
-    [d_id] => 70
-    [lang] => tw
-    [d_class1] => websites
+    [d_data1] => localhost
+    [d_data2] => db_zxc
     [d_title] => zxc
     [d_title_en] => zxc
-    [d_data6] => zxc
-    [d_date] => 2026-04-15 18:08:49
-    [d_active] => 1
-    [d_data1] => localhost
-    [d_data2] => db_test
-    [d_data3] => 
-    [d_data4] => 
-    [d_data5] => Array
-        (
-            [0] => news
-            [1] => product
-            [2] => contactus
-        )
-
-    [d_data7] => https://github.com/g5pq352/zxc
-    [d_data8] => 
-    [d_content] => [Git History] Repo created and pushed at 2026-04-16 10:20:55.
-URL: https://github.com/g5pq352/zxc
-)
-
-================
-=== POST DUMP ===
-Array
-(
-    [MM_insert] => form1
-    [d_id] => 0
-    [lang] => tw
-    [d_class1] => websites
-    [d_title] => zxc
-    [d_title_en] => zxc
-    [d_data6] => zxc
-    [d_date] => 2026-04-16 10:29:47
-    [d_active] => 1
-    [d_data1] => localhost
-    [d_data2] => db_test
-    [d_data3] => 
-    [d_data4] => 
-    [d_data5] => Array
-        (
-            [0] => news
-        )
-
-    [d_data7] => 
-    [d_data8] => 
-    [d_content] => 
-)
-
-================
-=== POST DUMP ===
-Array
-(
-    [MM_insert] => form1
-    [d_id] => 0
-    [lang] => tw
-    [d_class1] => websites
-    [d_title] => zxc
-    [d_title_en] => zxc
-    [d_data6] => zxc
-    [d_date] => 2026-04-16 10:31:22
-    [d_active] => 1
-    [d_data1] => localhost
-    [d_data2] => db_test
-    [d_data3] => 
-    [d_data4] => 
     [d_data5] => Array
         (
             [0] => news
@@ -80,60 +14,24 @@ Array
 
     [custom_modules] => Array
         (
-            [0] => Array
-                (
-                    [_uid] => 6e08598a-dc1b-4824-abee-3cdd74ae40cf
-                    [m_name] => 部落格
-                    [m_slug] => blog
-                    [m_type] => single
-                )
-
         )
 
-    [d_data7] => 
-    [d_data8] => 
-    [d_content] => 
 )
 
 ================
-=== POST DUMP ===
-Array
-(
-    [MM_insert] => form1
-    [d_id] => 0
-    [lang] => tw
-    [d_class1] => websites
-    [d_title] => zxc
-    [d_title_en] => zxc
-    [d_data6] => zxc
-    [d_date] => 2026-04-16 10:47:34
-    [d_active] => 1
-    [d_data1] => localhost
-    [d_data2] => db_test
-    [d_data3] => 
-    [d_data4] => 
-    [d_data5] => Array
-        (
-            [0] => news
-            [1] => product
-            [2] => contactus
-        )
 
-    [custom_modules] => Array
-        (
-            [0] => Array
-                (
-                    [_uid] => a4be5a98-196e-4966-bf29-f38864995fe0
-                    [m_name] => 部落格
-                    [m_slug] => blog
-                    [m_type] => single
-                )
-
-        )
-
-    [d_data7] => 
-    [d_data8] => 
-    [d_content] => 
-)
-
-================
+--- [SITE FACTORY] WRITING TO NEW .ENV ---
+Target: D:\wamp64\www\zxc\.env
+DB_NAME: db_zxc
+DB_USER: root
+IS_LOCAL: YES
+------------------------------------------
+[MYSQL IDENTITY]: Identified as root@localhost
+F. SQL IMPORT SUCCESS: templatev1.0.3-real.sql
+[MODULE INIT] Standard: 3, Custom: 0
+[FILE OK] Written Controller: NewsController
+[MODULE DONE] Processed Standard: news
+[FILE OK] Written Controller: ProductController
+[MODULE DONE] Processed Standard: product
+[FILE OK] Written Controller: ContactusController
+[MODULE DONE] Processed Standard: contactus

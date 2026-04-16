@@ -95,8 +95,11 @@ class SubsiteHelper
         // =============
 
         $dbName = $postData['d_data2'] ?? '';
-        // 直接從英文標題產生資料夾名稱 (Slug)
         $slug = self::sanitizeSlug($postData['d_title_en'] ?? '');
+        
+        // 【修正】必須提取模組資料，否則後續初始化會失敗
+        $standardModules = $postData['d_data5'] ?? [];
+        $customModules   = $postData['custom_modules'] ?? [];
         
         if (empty($dbName) || empty($slug)) return;
 
@@ -143,26 +146,53 @@ class SubsiteHelper
                 // 如果站點已存在，僅同步設定檔 (例如 DB 帳密異動)
                 self::updateConfigs($dst, $postData, $slug, $src);
                 
-                // 非新站點則跳過後續 Destructive DB 初始化，避免覆蓋已開發內容
-                return;
+                // 註解掉 return，方便開發階段重複測試資料庫初始化
+                // return; 
             }
 
-            // D. 建立資料庫 (若有權限則自動建立，若無權限則忽略錯誤嘗試連線)
+            // E. 獲取連線資訊 (智慧判斷環境)
+            $isLocal = IS_LOCAL;
+            
+            // --- 工廠管理模式：優先尋找具備建庫權限的管理員帳號 (例如 root) ---
+            $factoryUser = getenv('FACTORY_DB_USER') ?: null;
+            $factoryPass = getenv('FACTORY_DB_PASS') ?: null;
+
+            if ($isLocal) {
+                $dbHost = !empty($postData['d_data1']) ? $postData['d_data1'] : (getenv('DEV_DB_HOST') ?: HOSTNAME);
+                $dbUser = !empty($postData['d_data3']) ? $postData['d_data3'] : ($factoryUser ?: (getenv('DEV_DB_USER') ?: USERNAME));
+                $dbPass = !empty($postData['d_data4']) ? $postData['d_data4'] : ($factoryPass ?: (getenv('DEV_DB_PASS') ?: PASSWORD));
+            } else {
+                $dbHost = !empty($postData['d_data1']) ? $postData['d_data1'] : (getenv('DB_HOST') ?: HOSTNAME);
+                $dbUser = !empty($postData['d_data3']) ? $postData['d_data3'] : ($factoryUser ?: (getenv('DB_USER') ?: USERNAME));
+                $dbPass = !empty($postData['d_data4']) ? $postData['d_data4'] : ($factoryPass ?: (getenv('DB_PASS') ?: PASSWORD));
+            }
+
+            // D. 建立資料庫 (若有管理員帳號則用管理員連，否則用主連線)
             try {
-                $masterConn->exec("CREATE DATABASE IF NOT EXISTS `{$dbName}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci");
+                $targetConn = null;
+                if ($factoryUser) {
+                    // 建立臨時的高權限連線來開庫
+                    $adminDsn = "mysql:host={$dbHost};charset=utf8";
+                    $targetConn = new PDO($adminDsn, $factoryUser, $factoryPass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+                } else {
+                    $targetConn = $masterConn;
+                }
+
+                // 記錄目前在 MySQL 眼中你是誰 (除錯用)
+                $ident = $targetConn->query("SELECT CURRENT_USER()")->fetchColumn();
+                $logFile = realpath(__DIR__ . '/../../') . '/subsite_post_log.txt';
+                @file_put_contents($logFile, "[MYSQL IDENTITY]: Identified as {$ident}\n", FILE_APPEND);
+
+                $targetConn->exec("CREATE DATABASE IF NOT EXISTS `{$dbName}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci");
+                
+                if ($factoryUser) unset($targetConn); // 功成身退
             } catch (Exception $e) {
-                // 在 cPanel 或受限環境，若資料庫已手動建好但無 CREATE 權限，則忽略此錯誤繼續
+                $logFile = realpath(__DIR__ . '/../../') . '/subsite_post_log.txt';
+                @file_put_contents($logFile, "CREATE DB ATTEMPT (Ignored Error): " . $e->getMessage() . "\n", FILE_APPEND);
             }
             
-            // E. 獲取新資料庫連線
-            if (empty($postData['d_data3'])) {
-                $dbUser = 'root';
-                $dbPass = ''; 
-            } else {
-                $dbUser = $postData['d_data3'];
-                $dbPass = $postData['d_data4'] ?? '';
-            }
-            $dsn = "mysql:host=localhost;dbname={$dbName};charset=utf8";
+            // F. 獲取新子站資料庫連線 (使用子站自己的帳密執行匯入)
+            $dsn = "mysql:host={$dbHost};dbname={$dbName};charset=utf8";
             $subConn = new PDO($dsn, $dbUser, $dbPass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
             // 修復 MySQL 5.7+ 嚴格模式，確保子網站查詢不報錯
@@ -173,6 +203,13 @@ class SubsiteHelper
             if (file_exists($sqlFile)) {
                 $sql = file_get_contents($sqlFile);
                 $subConn->exec($sql);
+                
+                // 記錄匯入成功
+                $logFile = realpath(__DIR__ . '/../../') . '/subsite_post_log.txt';
+                @file_put_contents($logFile, "F. SQL IMPORT SUCCESS: " . basename($sqlFile) . "\n", FILE_APPEND);
+            } else {
+                $logFile = realpath(__DIR__ . '/../../') . '/subsite_post_log.txt';
+                @file_put_contents($logFile, "F. SQL IMPORT FAILED: File not found ({$sqlFile})\n", FILE_APPEND);
             }
 
             // G. 初始化內容模式與選單
@@ -274,14 +311,23 @@ class SubsiteHelper
         $conn->exec("SET FOREIGN_KEY_CHECKS = 1;");
         $conn->exec("DELETE FROM cms_menus WHERE menu_link IN ('tpl=news/list', 'tpl=product/list', 'tpl=contactus/list') OR menu_base_type IN ('news', 'product', 'contactus') OR menu_type IN ('news', 'product', 'contactus') OR menu_type LIKE 'news%' OR menu_type LIKE 'product%' OR menu_type LIKE 'contactus%'");
 
+        // === DEBUG: 記錄模組處理數量 ===
+        $logFile = realpath(__DIR__ . '/../../') . '/subsite_post_log.txt';
+        $countLog = "[MODULE INIT] Standard: " . count($standardSlugs) . ", Custom: " . count($customModules) . "\n";
+        @file_put_contents($logFile, $countLog, FILE_APPEND);
+
         // A. 處理標準模組 (依照使用者是否有勾選來建立)
         foreach ($standardSlugs as $slug) {
-            if (!isset($templates[$slug])) continue;
+            if (!isset($templates[$slug])) {
+                @file_put_contents($logFile, "[MODULE SKIP] Template for '{$slug}' not defined.\n", FILE_APPEND);
+                continue;
+            }
             $t = $templates[$slug];
             self::createModuleStructure($conn, $t, $slug, $sort++);
             
             // 【新增】生成前台檔案 (Controller & Views)
             self::generateFrontendModuleFiles($slug, $t['title'], $t['base'], $dst);
+            @file_put_contents($logFile, "[MODULE DONE] Processed Standard: {$slug}\n", FILE_APPEND);
         }
 
         // B. 處理自訂模組 (將其看作 news 類型的變體)
@@ -526,8 +572,8 @@ class SubsiteHelper
         $isInfo = (($t['pageType'] ?? 'list') === 'info');
         $menuLink = $isInfo ? "tpl={$slug}/info" : "tpl={$slug}/list";
         
-        $stmtParent = $conn->prepare("INSERT INTO cms_menus (menu_title, menu_icon, menu_sort, menu_active, menu_id_num, menu_link) VALUES (?, ?, ?, 1, ?, ?)");
-        $stmtParent->execute([$t['title'], $t['icon'], $sort, $t['id_num'], $menuLink]);
+        $stmtParent = $conn->prepare("INSERT INTO cms_menus (menu_title, m_slug, menu_icon, menu_sort, menu_active, menu_id_num, menu_link) VALUES (?, ?, ?, ?, 1, ?, ?)");
+        $stmtParent->execute([$t['title'], $slug, $t['icon'], $sort, $t['id_num'], $menuLink]);
         $parentId = $conn->lastInsertId();
 
         // 3. 建立子選單 (Content / Settings)
@@ -539,9 +585,9 @@ class SubsiteHelper
             'menuValue'  => $slug,
             'listPage'   => ['hasHierarchy' => $t['hasHierarchy'] ?? false]
         ];
-        $stmtChild = $conn->prepare("INSERT INTO cms_menus (menu_parent_id, menu_title, menu_type, menu_link, menu_icon, menu_sort, menu_active, menu_base_type, menu_config_override, menu_table, menu_pk) VALUES (?, ?, ?, ?, ?, 1, 1, ?, ?, ?, ?)");
+        $stmtChild = $conn->prepare("INSERT INTO cms_menus (menu_parent_id, menu_title, m_slug, menu_type, menu_link, menu_icon, menu_sort, menu_active, menu_base_type, menu_config_override, menu_table, menu_pk) VALUES (?, ?, ?, ?, ?, ?, 1, 1, ?, ?, ?, ?)");
         $stmtChild->execute([
-            $parentId, $childTitle, $slug, $childLink, "", $t['base'], 
+            $parentId, $childTitle, $slug, $slug, $childLink, "", $t['base'], 
             json_encode($override, JSON_UNESCAPED_UNICODE), $t['schema']['table'], $t['schema']['pk']
         ]);
 
@@ -551,7 +597,7 @@ class SubsiteHelper
             $catSlug = $slug . 'Cate';
             $catOverride = ['hasHierarchy' => $t['hasHierarchy'], 'taxonomy_type_id' => $taxId];
             $stmtChild->execute([
-                $parentId, '分類', $catSlug, "tpl={$catSlug}/list", "", 
+                $parentId, '分類', $catSlug, $catSlug, "tpl={$catSlug}/list", "", 
                 'taxonomy', json_encode($catOverride, JSON_UNESCAPED_UNICODE), 'taxonomies', 't_id'
             ]);
             // 更新該選單的 taxonomy_type_id 欄位 (實體欄位)
@@ -562,7 +608,7 @@ class SubsiteHelper
             $tagSlug = $slug . 'Tag';
             $tagOverride = ['hasHierarchy' => false, 'taxonomy_type_id' => $taxId];
             $stmtChild->execute([
-                $parentId, '標籤', $tagSlug, "tpl={$tagSlug}/list", "", 
+                $parentId, '標籤', $tagSlug, $tagSlug, "tpl={$tagSlug}/list", "", 
                 'taxonomy', json_encode($tagOverride, JSON_UNESCAPED_UNICODE), 'taxonomies', 't_id'
             ]);
             $lastId = $conn->lastInsertId();
@@ -589,6 +635,19 @@ class SubsiteHelper
         'sass',
         'src',
         'dist',
+        'cms/set',
+        'app/Controllers',
+        '.htaccess',
+        '.env_example',
+        'package.json',
+        'package-lock.json',
+        'composer.json',
+        'composer.lock',
+        'README.md',
+        'bs-config.js',
+        'nodemon.json',
+        'postcss.config.cjs',
+        'tailwind.config.cjs',
     ];
 
     private static function recursiveCopy($src, $dst, $root, $patterns)
@@ -612,16 +671,20 @@ class SubsiteHelper
             }
             if ($skip) continue;
 
-            // 強制保留：bypass .gitignore 過濾
+            // 強制保留：如果是「根目錄下的檔案」或在「強制保留名錄」中，則 bypass .gitignore 過濾
             $forceKeep = false;
-            foreach (self::$forceIncludes as $inc) {
-                if ($file === $inc || $relative === $inc || strpos($relative, $inc . '/') === 0) {
-                    $forceKeep = true;
-                    break;
+            if (!is_dir($fullSrcPath) && strpos($relative, '/') === false) {
+                $forceKeep = true; // 根目錄檔案一律保留
+            } else {
+                foreach (self::$forceIncludes as $inc) {
+                    if ($file === $inc || $relative === $inc || strpos($relative, $inc . '/') === 0) {
+                        $forceKeep = true;
+                        break;
+                    }
                 }
             }
 
-            // .gitignore 規則排除（白名單可跳過）
+            // .gitignore 規則排除（白名單/根目錄檔案可跳過）
             if (!$forceKeep && self::shouldIgnore($relative, $patterns)) continue;
 
             if (is_dir($fullSrcPath)) {
@@ -735,17 +798,30 @@ class SubsiteHelper
         if (file_exists($envFile)) {
             $env = file_get_contents($envFile);
             // 修正為符合 .env 實際使用的變數名稱
+            // 決定要寫入新 .env 的帳密資訊 (智慧判斷環境：IS_LOCAL 定義在 config.php)
+            if (IS_LOCAL) {
+                $dbHost = !empty($postData['d_data1']) ? $postData['d_data1'] : (getenv('DEV_DB_HOST') ?: HOSTNAME);
+                $dbUser = !empty($postData['d_data3']) ? $postData['d_data3'] : (getenv('DEV_DB_USER') ?: USERNAME);
+                $dbPass = !empty($postData['d_data4']) ? $postData['d_data4'] : (getenv('DEV_DB_PASS') ?: PASSWORD);
+            } else {
+                $dbHost = !empty($postData['d_data1']) ? $postData['d_data1'] : (getenv('DB_HOST') ?: HOSTNAME);
+                $dbUser = !empty($postData['d_data3']) ? $postData['d_data3'] : (getenv('DB_USER') ?: USERNAME);
+                $dbPass = !empty($postData['d_data4']) ? $postData['d_data4'] : (getenv('DB_PASS') ?: PASSWORD);
+            }
+
+            // 記錄要寫入新 .env 的具體帳密資訊到 Log 中供查證
+            $logFile = realpath(__DIR__ . '/../../') . '/subsite_post_log.txt';
+            $logMsg = "\n--- [SITE FACTORY] WRITING TO NEW .ENV ---\nTarget: {$envFile}\nDB_NAME: {$dbName}\nDB_USER: {$dbUser}\nIS_LOCAL: " . (IS_LOCAL ? 'YES' : 'NO') . "\n------------------------------------------\n";
+            @file_put_contents($logFile, $logMsg, FILE_APPEND);
+
+            $env = preg_replace('/DB_HOST=.*/', 'DB_HOST=' . $dbHost, $env);
+            $env = preg_replace('/DEV_DB_HOST=.*/', 'DEV_DB_HOST=' . $dbHost, $env);
             $env = preg_replace('/DB_NAME=.*/', 'DB_NAME=' . $dbName, $env);
             $env = preg_replace('/DEV_DB_NAME=.*/', 'DEV_DB_NAME=' . $dbName, $env);
-            if (empty($postData['d_data3'])) {
-                $dbUser = 'root';
-                $dbPass = '';
-            } else {
-                $dbUser = $postData['d_data3'];
-                $dbPass = $postData['d_data4'] ?? '';
-            }
             $env = preg_replace('/DB_USER=.*/', 'DB_USER=' . $dbUser, $env);
+            $env = preg_replace('/DEV_DB_USER=.*/', 'DEV_DB_USER=' . $dbUser, $env);
             $env = preg_replace('/DB_PASS=.*/', 'DB_PASS=' . $dbPass, $env);
+            $env = preg_replace('/DEV_DB_PASS=.*/', 'DEV_DB_PASS=' . $dbPass, $env);
             
             // 強制切換為 template 模式
             if (preg_match('/SYSTEM_TEMPLATE=.*/', $env)) {
@@ -761,8 +837,8 @@ class SubsiteHelper
         $configFile = $targetPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
         if (file_exists($configFile)) {
             $config = file_get_contents($configFile);
-            // 將原本的路徑替換為新的 slug (支援三元運算式格式)
-            $config = preg_replace("/define\('APP_ROOT_PATH', IS_LOCAL \? '.*' : ''\);/", "define('APP_ROOT_PATH', IS_LOCAL ? '/" . $slug . "' : '');", $config);
+            // 將正式環境（IS_LOCAL 為 false）的路徑替換為新的 slug，本機路徑維持不變
+            $config = preg_replace("/define\('APP_ROOT_PATH', IS_LOCAL \? '(.*?)' : '.*?'\);/", "define('APP_ROOT_PATH', IS_LOCAL ? '$1' : '/" . $slug . "');", $config);
             file_put_contents($configFile, $config);
         }
 
@@ -802,6 +878,7 @@ class SubsiteHelper
      */
     private static function generateFrontendModuleFiles($slug, $name, $baseType, $dst, $isHierarchy = false)
     {
+        $logFile = realpath(__DIR__ . '/../../') . '/subsite_post_log.txt';
         $templateDir = __DIR__ . '/templates/frontend/';
         $controllerTmpl = '';
         $views = [];
@@ -864,7 +941,10 @@ class SubsiteHelper
             return; // 其它類型暫不自動生成
         }
 
-        if (empty($controllerTmpl) || !file_exists($controllerTmpl)) return;
+        if (empty($controllerTmpl) || !file_exists($controllerTmpl)) {
+            @file_put_contents($logFile, "[FILE ERR] Controller template NOT FOUND: {$controllerTmpl}\n", FILE_APPEND);
+            return;
+        }
 
         // 根據階層旗標動態選擇 Repository
         // 只有產品 (product) 或是特定的多層結構才改用 ProductRepository
@@ -877,7 +957,14 @@ class SubsiteHelper
             [$className, $slug, $name, $repoName],
             $content
         );
-        file_put_contents($dst . '/app/Controllers/' . $className . '.php', $content);
+        $ctrlDst = $dst . '/app/Controllers/' . $className . '.php';
+        $writeCtrl = file_put_contents($ctrlDst, $content);
+        
+        if ($writeCtrl === false) {
+            @file_put_contents($logFile, "[FILE ERR] Failed to write Controller: {$ctrlDst}\n", FILE_APPEND);
+        } else {
+            @file_put_contents($logFile, "[FILE OK] Written Controller: {$className}\n", FILE_APPEND);
+        }
 
         // 2. 生成 Views (強制覆蓋)
         // 全部採用「兩層架構」(Root Wrapper -> View Fragment)
@@ -953,4 +1040,5 @@ class SubsiteHelper
 
         file_put_contents($file, $content);
     }
+
 }

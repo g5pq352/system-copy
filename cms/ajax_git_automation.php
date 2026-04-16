@@ -71,10 +71,21 @@ try {
         exit;
     }
 
-    // 4. Git 環境檢查 (簡單測試)
-    $gitCheck = shell_exec("git --version");
+    // 4. Git 環境檢查 (強化版)
+    $logFile = __DIR__ . '/git_debug_log.txt';
+    $shellExecEnabled = function_exists('shell_exec') && !in_array('shell_exec', array_map('trim', explode(',', ini_get('disable_functions'))));
+    
+    if (!$shellExecEnabled) {
+        echo json_encode(['success' => false, 'message' => 'PHP 環境禁用了 shell_exec 函式，請聯繫主機商開啟。']);
+        exit;
+    }
+
+    $gitPath = trim(shell_exec("which git") ?: 'git');
+    updateProgress("使用 Git 路徑: {$gitPath}...");
+    
+    $gitCheck = shell_exec("{$gitPath} --version");
     if (!$gitCheck) {
-        echo json_encode(['success' => false, 'message' => '系統環境不支援 git 命令，請連絡系統管理員']);
+        echo json_encode(['success' => false, 'message' => '系統環境找不到 git 命令，或權限不足。']);
         exit;
     }
 
@@ -130,11 +141,11 @@ try {
     // 優化 .gitignore：核心保留，但排除測試、範例與冗餘語系
     updateProgress('正在執行精確瘦身優化 (過濾非必要檔案)...');
     $gitignorePath = $localPath . DIRECTORY_SEPARATOR . '.gitignore';
-    $defaultIgnores = "\n# Aggressive performance optimization\n" .
-                      "vendor/**/tests/\nvendor/**/docs/\nvendor/**/examples/\nvendor/**/.git/\n" .
-                      "cms/ckeditor/samples/\ncms/ckeditor/docs/\n" .
-                      "public/temp/\n" .
-                      "*.log\nnode_modules/\n*.map\n.DS_Store\nThumbs.db";
+    $defaultIgnores = "\n# Performance optimization - Exclude non-essential files\n" .
+                      "vendor/**/tests/\nvendor/**/test/\nvendor/**/docs/\nvendor/**/Documentation/\n" .
+                      "vendor/**/examples/\nvendor/**/example/\nvendor/**/demo/\nvendor/**/demos/\n" .
+                      "vendor/**/.github/\nvendor/**/art/\nvendor/**/benchmarks/\n" .
+                      "vendor/**/.git/\ncms/ckeditor/samples/\npublic/temp/\n*.log\nnode_modules/\n.DS_Store\nThumbs.db";
     
     if (file_exists($gitignorePath)) {
         $content = file_get_contents($gitignorePath);
@@ -180,59 +191,18 @@ try {
     $hasCommits = shell_exec("git log --oneline -1 2>&1");
     $isFirstPush = empty(trim($hasCommits));
 
-    if ($isFirstPush) {
-        // === 首次推送：連線測試 + 完整掃描 ===
-        updateProgress('第一次推送：測試 GitHub 連線...');
-        shell_exec("git add .gitignore 2>&1");
-        shell_exec('git commit -m "Stage 1: Connection Test" 2>&1');
-        shell_exec("git branch -M main 2>&1");
-        $testPush = shell_exec("git push -u origin main 2>&1");
-        if (strpos($testPush, 'rejected') !== false || strpos($testPush, 'fatal') !== false) {
-            file_put_contents(__DIR__ . '/git_debug_log.txt', "[" . date('Y-m-d H:i:s') . "] Stage 1 Failed: {$testPush}\n", FILE_APPEND);
-            echo json_encode(['success' => false, 'message' => "GitHub 連線測試失敗：\n" . substr($testPush, 0, 200)]);
-            exit;
-        }
-
-        updateProgress('連線成功！正在加入根目錄與核心邏輯 (1/5)...');
-        shell_exec("git add index.php .htaccess .gitignore composer.json package.json 2>&1");
-        shell_exec("git add app/ config/ Connections/ sql/ 2>&1");
-
-        updateProgress('正在加入 CMS 後台 (2/5)...');
-        shell_exec("git add cms/ 2>&1");
-
-        updateProgress('正在加入前台模板 (3/5)...');
-        shell_exec("git add template/ 2>&1");
-
-        updateProgress('正在加入套件庫 (4/5)...');
-        shell_exec("git add vendor/ 2>&1");
-
-        updateProgress('正在加入上傳目錄 (5/5)...');
-        shell_exec("git add upload_image/ upload_file/ uploads/ 2>&1");
-
-    } else {
-        // === 後續更新推送：只掃描有變動的檔案 ===
-        updateProgress('偵測到已有版本，僅處理變更檔案 (超快模式)...');
-        shell_exec("git branch -M main 2>&1");
-        shell_exec("git remote set-url origin {$authRepoUrl} 2>&1");
-
-        // git add -u：只處理「已追蹤」的變更，速度極快
-        shell_exec("git add -u 2>&1");
-
-        // 補上可能新增的未追蹤目錄（不做全量掃描）
-        updateProgress('檢查新增檔案...');
-        $untrackedDirs = ['upload_image', 'upload_file', 'uploads'];
-        foreach ($untrackedDirs as $dir) {
-            if (is_dir($localPath . DIRECTORY_SEPARATOR . $dir)) {
-                shell_exec("git add {$dir}/ 2>&1");
-            }
-        }
-    }
-
-    shell_exec('git commit -m "Deployment update" --allow-empty 2>&1');
+    // === 全量推送模式 (最穩健) ===
+    updateProgress('正在執行掃描與加入所有檔案...');
+    
+    // 全量加入所有檔案 (遵循基礎 .gitignore)
+    shell_exec("git add . 2>&1");
+    
+    updateProgress('正在建立版本紀錄...');
     shell_exec("git branch -M main 2>&1");
+    shell_exec('git commit -m "Deployment update" --allow-empty 2>&1');
 
-    updateProgress('正在推送到 GitHub...');
-    $fullPush = shell_exec("git push origin main 2>&1");
+    updateProgress('正在推送到 GitHub (強制覆蓋)...');
+    $fullPush = shell_exec("git push origin main -f 2>&1");
 
     if (strpos($fullPush, 'rejected') !== false || strpos($fullPush, 'fatal') !== false) {
         file_put_contents(__DIR__ . '/git_debug_log.txt', "[" . date('Y-m-d H:i:s') . "] Stage 2 Failed: {$fullPush}\n", FILE_APPEND);
@@ -240,21 +210,19 @@ try {
         exit;
     }
 
-    // 7. 更新資料庫：只寫開發備註，不動前台網址(d_data7)
-    updateProgress('正在回寫開發筆記...');
+    // 7. 更新資料庫：僅更新 d_data7 (Git 網址) 用於鎖定按鈕，不再寫入開發筆記
+    updateProgress('正在同步狀態資訊...');
     $gitRepoPublicUrl = "https://github.com/{$githubUser}/{$repoName}";
-    $currentTime = date('Y-m-d H:i:s');
-    $noteAppend = "\n[Git] 推送時間：{$currentTime}\nRepo：{$gitRepoPublicUrl}";
     
-    $updateStmt = $conn->prepare("UPDATE data_set SET d_content = CONCAT(IFNULL(d_content, ''), :note) WHERE d_id = :id");
+    $updateStmt = $conn->prepare("UPDATE data_set SET d_data7 = :giturl WHERE d_id = :id");
     $updateStmt->execute([
-        ':note' => $noteAppend,
-        ':id'   => $itemId
+        ':giturl' => $gitRepoPublicUrl,
+        ':id'     => $itemId
     ]);
 
     echo json_encode([
         'success' => true, 
-        'message' => "成功！已推送到 main 分支。\nRepo：{$gitRepoPublicUrl}",
+        'message' => "Git 部署成功！",
     ]);
 
 } catch (Exception $e) {
