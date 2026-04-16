@@ -38,6 +38,9 @@ define("PASSWORD", $dbConfig['password']);
 try {
     $dsn = "mysql:host=". HOSTNAME .";dbname=". DATABASE .";charset=utf8";
     $conn = new PDO($dsn, USERNAME , PASSWORD);
+    
+    // 修復 MySQL 5.7+ 嚴格模式 ONLY_FULL_GROUP_BY 問題
+    $conn->exec("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
 
     // 定義網站 ID 與路徑識別碼 (供圖片隔離使用)
     define("SITE_ID", $dbConfig['site_id'] ?? 0);

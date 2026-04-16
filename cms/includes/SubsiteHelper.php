@@ -147,19 +147,26 @@ class SubsiteHelper
                 return;
             }
 
-            // D. 建立資料庫 (如果不存在)
-            $masterConn->exec("CREATE DATABASE IF NOT EXISTS `{$dbName}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci");
+            // D. 建立資料庫 (若有權限則自動建立，若無權限則忽略錯誤嘗試連線)
+            try {
+                $masterConn->exec("CREATE DATABASE IF NOT EXISTS `{$dbName}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci");
+            } catch (Exception $e) {
+                // 在 cPanel 或受限環境，若資料庫已手動建好但無 CREATE 權限，則忽略此錯誤繼續
+            }
             
             // E. 獲取新資料庫連線
             if (empty($postData['d_data3'])) {
                 $dbUser = 'root';
-                $dbPass = ''; // 若帳號留空(依賴預設)，則強制密碼也為空(防堵瀏覽器亂塞亂填)
+                $dbPass = ''; 
             } else {
                 $dbUser = $postData['d_data3'];
                 $dbPass = $postData['d_data4'] ?? '';
             }
             $dsn = "mysql:host=localhost;dbname={$dbName};charset=utf8";
             $subConn = new PDO($dsn, $dbUser, $dbPass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+            // 修復 MySQL 5.7+ 嚴格模式，確保子網站查詢不報錯
+            $subConn->exec("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
 
             // F. 匯入基礎 SQL 結構
             $sqlFile = $src . '/sql/templatev1.0.3-real.sql';

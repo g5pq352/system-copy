@@ -69,7 +69,8 @@ class DB
 			$this->pdo->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
 			*/
 			$this->bConnected = true;
-			
+			// 修復 MySQL 5.7+ 嚴格模式 ONLY_FULL_GROUP_BY 問題
+			$this->pdo->exec("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
 		}
 		catch (PDOException $e) {
 			echo $this->ExceptionLog($e->getMessage());
