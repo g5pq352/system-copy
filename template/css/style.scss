@@ -1,0 +1,35 @@
+@use "scss/basic" as *;
+
+// header
+@use "scss/module/header/header01";
+@use "scss/module/header/header02";
+
+// contact
+@use "scss/module/mbPanel/mbPanel01";
+
+// footer
+@use "scss/module/footer/footer01";
+
+// gdpr
+@use "scss/module/gdpr/gdpr01";
+
+// about
+@use "scss/module/about/about01";
+
+// news
+@use "scss/module/news/news01";
+
+// contact
+@use "scss/module/contact/contact01";
+
+// company
+@use "scss/module/company/company01";
+
+// faq
+@use "scss/module/faq/faq01";
+
+
+/* Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

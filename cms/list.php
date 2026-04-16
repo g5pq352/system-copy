@@ -1315,6 +1315,8 @@ require_once('display_page.php');
                                                                     } elseif ($col['field'] === 'preview') {
                                                                         // 【新增】子網站預覽/環境切換按鈕
                                                                         echo renderPreviewButton($rowId, $row['d_title_en'] ?? '');
+                                                                    } elseif ($col['field'] === 'git_push') {
+                                                                        echo renderGitPushButton($rowId);
                                                                     } elseif ($col['field'] === 'next_level') {
                                                                         // 【階層導航】下一層按鈕
                                                                         if ($hasHierarchicalNav) {

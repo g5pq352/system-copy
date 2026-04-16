@@ -12,6 +12,7 @@ require_once 'auth.php';
 require_once(__DIR__ . '/includes/elements/ModuleConfigElement.php');
 require_once(__DIR__ . '/includes/elements/PermissionElement.php');
 require_once(__DIR__ . '/includes/elements/FormProcessElement.php');
+require_once(__DIR__ . '/includes/elements/SwalConfirmElement.php');
 
 // 載入其他輔助函數
 require_once(__DIR__ . '/includes/categoryHelper.php');
@@ -1250,6 +1251,17 @@ if ($hasHierarchicalNav && $parentIdField) {
                                             <?php if ($tableName !== 'message_set' || isset($moduleConfig['statusActive']) && $moduleConfig['statusActive'] == true): ?>
                                                 <?php echo renderSubmitButton('儲存 (alt+s)'); ?>
                                             <?php endif; ?>
+                                            <?php if ($module === 'websites' && $d_id > 0): ?>
+                                                <?php 
+                                                $isPushed = !empty($rowData['d_data7']);
+                                                $btnLabel = $isPushed ? '已佈署到 Git' : 'Git 設定';
+                                                $btnAttr = $isPushed ? 'disabled' : 'onclick="handleGitPush(this)"';
+                                                $btnClass = $isPushed ? 'btn btn-secondary' : 'btn btn-dark';
+                                                ?>
+                                                <button type="button" id="gitPushBtn" class="<?= $btnClass ?> btn-md font-weight-semibold btn-py-2 px-4" data-id="<?= $d_id ?>" <?= $btnAttr ?>>
+                                                    <i class="fab fa-github"></i> <?= $btnLabel ?>
+                                                </button>
+                                            <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -1443,13 +1455,12 @@ if ($hasHierarchicalNav && $parentIdField) {
                             });
                         });
                     </script>
-                <?php endif; ?>
-            </section>
-        </div>
     </section>
 </body>
 
 </html>
+
+<?php endif; // 補上遺失的 if(isset($tableName)) 閉合 ?>
 
 <script type="text/javascript">
     <?php if ($isTrashView): ?>
@@ -2128,4 +2139,63 @@ $(document).ready(function() {
         });
     }
 });
+</script>
+
+<?php SwalConfirmElement::render(); ?>
+
+<script>
+// Git 自動化推送到 GitHub
+function handleGitPush(element) {
+    const itemId = $(element).data('id');
+    let progressInterval;
+    
+    // 直接開始，不彈出初始確定按鈕
+    showProcessing('正在啟動自動化環境...');
+
+    // 啟動進度輪詢
+    progressInterval = setInterval(() => {
+        $.ajax({
+            url: 'ajax_git_status.php',
+            type: 'GET',
+            cache: false,
+            success: function(res) {
+                if (res.success && res.progress) {
+                    // 動態更新 SweetAlert2 的標題，並確保隱藏所有按鈕
+                    Swal.update({
+                        title: res.progress,
+                        showConfirmButton: false,
+                        showCancelButton: false
+                    });
+                }
+            }
+        });
+    }, 800);
+
+    $.ajax({
+        url: 'ajax_git_automation.php',
+        type: 'POST',
+        data: {
+            item_id: itemId
+        },
+        dataType: 'json',
+        success: function (response) {
+            clearInterval(progressInterval);
+            if (response.success) {
+                // 成功後才顯示帶有「確定」按鈕的提示
+                showSuccess('Git 佈署成功！', response.message, () => {
+                    $('#gitPushBtn').prop('disabled', true).html('<i class="fab fa-github"></i> 已佈署到 Git');
+                    if ($('#d_data7').length) {
+                        $('#d_data7').val(response.url);
+                    }
+                });
+            } else {
+                showError('Git 佈署失敗', response.message || '發生未知錯誤');
+            }
+        },
+        error: function (xhr) {
+            clearInterval(progressInterval);
+            showError('請求失敗', '發生連線錯誤或後端逾時，請檢查 Git 狀態');
+        }
+    });
+}
 </script>

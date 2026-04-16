@@ -54,6 +54,14 @@ function renderPreviewButton($id, $titleEn = '')
     return "<a href=\"".PORTAL_AUTH_URL."dashboard?preview_id={$id}\" class=\"btn btn-success\" title=\"預覽環境\"><i class=\"fas fa-external-link-alt\"></i> 預覽</a>";
 }
 
+/**
+ * 渲染 Git 設定按鈕
+ */
+function renderGitPushButton($id)
+{
+    return "<a href=\"javascript:void(0);\" class=\"btn btn-dark\" data-id=\"{$id}\" title=\"Git 設定\" onclick=\"handleGitPush(this)\"><i class=\"fab fa-github\"></i></a>";
+}
+
 function renderViewButton($id, $module, $primaryKey = 'd_id', $isTrash = false, $extraParams = [])
 {
     $params = ["{$primaryKey}={$id}"];

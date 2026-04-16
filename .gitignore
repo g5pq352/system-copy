@@ -34,14 +34,14 @@ package-lock.json
 *.gz
 
 # User uploads
-/upload_image/
-/upload_file/
+#/upload_image/
+#/upload_file/
 /thumbs/
-/uploads/
+#/uploads/
 
 # module path
 /views/
-/template/
+#/template/
 /sass/
 /stylesheets/
 /src/

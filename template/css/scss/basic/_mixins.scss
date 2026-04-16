@@ -1,0 +1,116 @@
+//==================================================
+// RWD設定
+//==================================================
+// 斷點定義
+$breakpoints: (
+    xl: xl,
+    lg: lg,
+    md: md,
+    sm: sm,
+    desktop: desktop
+);
+@mixin media-screen($size) {
+    @if not map-has-key($breakpoints, $size) {
+        @warn "No breakpoint found for `#{$size}`.";
+    } @else {
+        $conf: map-get($breakpoints, $size);
+
+        @if type-of($conf) != 'map' {
+            @media screen and (max-width: $conf) { @content; }
+        } @else if map-has-key($conf, max) {
+            @media screen and (max-width: map-get($conf, max)) { @content; }
+
+        } @else if map-has-key($conf, min) {
+            @media screen and (min-width: map-get($conf, min)) { @content; }
+
+        } @else {
+            @warn "Breakpoint `#{$size}` has neither min nor max.";
+        }
+    }
+}
+//==================================================
+// 自訂好用寫法
+//==================================================
+// margin-bottom
+@mixin mb($value) {
+	margin-bottom: $value;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+// margin-left
+@mixin mr($value) {
+	margin-right: $value;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+// font
+@function font($num, $min-ratio: 0.8) {
+	$min: $num * $min-ratio;
+	@return clamp(#{$min}px, calc(#{$num} / 19.2 * 1vw), #{$num}px);
+}
+// vw
+@function vw($num) {
+	@return calc(#{$num} / 19.2 * 1vw);
+}
+//==================================================
+// &.in 效果
+//==================================================
+@mixin transition-opacity-transform-set {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity $ani_duration $ani_function,
+        transform $ani_duration $ani_function;
+}
+
+@mixin transition-opacity-transform($delay: 0.3s) {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity $ani_duration $ani_function $delay,
+        transform $ani_duration $ani_function $delay;
+}
+
+@mixin staggered-transition($step: 0.3s, $count: 100) {
+    @for $i from 1 through $count {
+        &:nth-child(#{$i}) {
+            @include transition-opacity-transform($step * $i);
+        }
+    }
+}
+//==================================================
+// animate
+//==================================================
+@keyframes arrowCycle {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    40% {
+        transform: translateX(55%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-55%);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+// animation: arrowCycle .8s ease-in-out;
+
+@keyframes rotate {
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+// animation: rotate 15s linear infinite;

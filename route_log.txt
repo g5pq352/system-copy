@@ -1,4 +1,0 @@
-[2026-04-14 17:08:30] --- Start Routing Registration ---
-ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'menu_base_type' in 'field list'
-[2026-04-14 17:08:30] --- Start Routing Registration ---
-ERROR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'menu_base_type' in 'field list'
