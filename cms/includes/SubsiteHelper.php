@@ -837,7 +837,7 @@ class SubsiteHelper
         $configFile = $targetPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
         if (file_exists($configFile)) {
             $config = file_get_contents($configFile);
-            // 將正式環境（IS_LOCAL 為 false）的路徑替換為新的 slug，本機路徑維持不變
+            // 保持本機路徑 ($1) 不變，僅將正式環境（線上）路徑替換為 /$slug
             $config = preg_replace("/define\('APP_ROOT_PATH', IS_LOCAL \? '(.*?)' : '.*?'\);/", "define('APP_ROOT_PATH', IS_LOCAL ? '$1' : '/" . $slug . "');", $config);
             file_put_contents($configFile, $config);
         }

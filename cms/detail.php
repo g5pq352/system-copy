@@ -1254,23 +1254,36 @@ if ($hasHierarchicalNav && $parentIdField) {
                                             <?php endif; ?>
                                             <?php if ($module === 'websites' && $d_id > 0): ?>
                                                 <?php 
-                                                $isInitialized = !empty($rowData['d_data8']);
-                                                $isPushed = !empty($rowData['d_data7']);
+                                                $isInitialized  = !empty($rowData['d_data8']);
+                                                $isPushed       = !empty($rowData['d_data7']);
+                                                $isDomainBound  = !empty($rowData['d_data9']);
+                                                $domain         = trim($rowData['d_data10'] ?? '');
+                                                $siteStatus     = intval($rowData['d_active'] ?? 2); // 2=建置中
                                                 
                                                 if (!$isInitialized): ?>
                                                     <!-- 階段 2: 實體化 (建立 DB 與資料夾) -->
                                                     <button type="button" id="initSiteBtn" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4" data-id="<?= $d_id ?>" onclick="handleSiteInitialize(this)">
                                                         <i class="fas fa-magic"></i> 初始化網站
                                                     </button>
+                                                <?php elseif (!$isPushed): ?>
+                                                    <!-- 階段 3: Git 推送 -->
+                                                    <button type="button" id="gitPushBtn" class="btn btn-dark btn-md font-weight-semibold btn-py-2 px-4" data-id="<?= $d_id ?>" onclick="handleGitPush(this)">
+                                                        <i class="fab fa-github"></i> Git 推送
+                                                    </button>
+                                                <?php elseif (!IS_LOCAL && $isDomainBound): ?>
+                                                    <!-- 階段 4: 已完成域名綁定 (鎖定) - 僅正式環境顯示 -->
+                                                    <button type="button" class="btn btn-secondary btn-md font-weight-semibold btn-py-2 px-4" disabled>
+                                                        <i class="fas fa-check-circle"></i> 域名已上線
+                                                    </button>
+                                                <?php elseif (!IS_LOCAL && $siteStatus === 1 && !empty($domain)): ?>
+                                                    <!-- 階段 4: 可執行域名綁定 + SSL - 僅正式環境顯示 -->
+                                                    <button type="button" id="domainSetupBtn" class="btn btn-success btn-md font-weight-semibold btn-py-2 px-4" data-id="<?= $d_id ?>" onclick="handleDomainSetup(this)">
+                                                        <i class="fas fa-globe"></i> 域名綁定 + SSL
+                                                    </button>
                                                 <?php else: ?>
-                                                    <!-- 階段 3: Git 推送 (僅在實體化後出現) -->
-                                                    <?php 
-                                                    $btnLabel = $isPushed ? '已佈署到 Git' : 'Git 設定';
-                                                    $btnAttr = $isPushed ? 'disabled' : 'onclick="handleGitPush(this)"';
-                                                    $btnClass = $isPushed ? 'btn btn-secondary' : 'btn btn-dark';
-                                                    ?>
-                                                    <button type="button" id="gitPushBtn" class="<?= $btnClass ?> btn-md font-weight-semibold btn-py-2 px-4" data-id="<?= $d_id ?>" <?= $btnAttr ?>>
-                                                        <i class="fab fa-github"></i> <?= $btnLabel ?>
+                                                    <!-- 已推送 (本機或尚未設定域名) -->
+                                                    <button type="button" class="btn btn-secondary btn-md font-weight-semibold btn-py-2 px-4" disabled title="<?= IS_LOCAL ? '本機環境不執行域名綁定' : '請填寫正式域名並將狀態設為上線中' ?>">
+                                                        <i class="fab fa-github"></i> 已佈署到 Git
                                                     </button>
                                                 <?php endif; ?>
                                             <?php endif; ?>
@@ -2253,6 +2266,52 @@ function handleGitPush(element) {
         error: function (xhr) {
             clearInterval(progressInterval);
             showError('請求失敗', '發生連線錯誤或後端逾時，請檢查 Git 狀態');
+        }
+    });
+}
+
+// 階段 4: 域名綁定 + SSL 自動化
+function handleDomainSetup(element) {
+    const itemId = $(element).data('id');
+    let progressInterval;
+
+    showProcessing('正在準備域名綁定...');
+
+    progressInterval = setInterval(() => {
+        $.ajax({
+            url: 'ajax_git_status.php',
+            type: 'GET',
+            cache: false,
+            success: function(res) {
+                if (res.success && res.progress) {
+                    Swal.update({
+                        title: res.progress,
+                        showConfirmButton: false,
+                        showCancelButton: false
+                    });
+                }
+            }
+        });
+    }, 800);
+
+    $.ajax({
+        url: 'ajax_site_domain_setup.php',
+        type: 'POST',
+        data: { item_id: itemId },
+        dataType: 'json',
+        success: function(response) {
+            clearInterval(progressInterval);
+            if (response.success) {
+                showSuccess('域名綁定成功！', response.message, () => {
+                    location.reload();
+                });
+            } else {
+                showError('域名綁定失敗', response.message);
+            }
+        },
+        error: function() {
+            clearInterval(progressInterval);
+            showError('請求失敗', '伺服器連線中斷或請求逾時');
         }
     });
 }
